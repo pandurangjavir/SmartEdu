@@ -1,0 +1,25 @@
+stories:
+- story: announcement story
+  steps:
+  - intent: get_announcements
+  - action: action_get_announcements
+
+- story: events story
+  steps:
+  - intent: get_events
+  - action: action_get_events
+
+- story: fees story
+  steps:
+  - intent: get_fees
+  - action: action_get_fees
+
+- story: students story
+  steps:
+  - intent: get_students
+  - action: action_get_students
+
+- story: teachers story
+  steps:
+  - intent: get_teachers
+  - action: action_get_teachers

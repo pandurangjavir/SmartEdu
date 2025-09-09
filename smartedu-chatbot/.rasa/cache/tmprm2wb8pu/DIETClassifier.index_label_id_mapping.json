@@ -1,0 +1,11 @@
+{
+  "0": "get_announcements",
+  "1": "get_events",
+  "2": "get_fees",
+  "3": "get_students",
+  "4": "get_teachers",
+  "5": "goodbye",
+  "6": "greet",
+  "7": "help",
+  "8": "update_from_pdf"
+}

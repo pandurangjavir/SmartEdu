@@ -1,0 +1,41 @@
+nlu:
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - hey bot
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you
+- intent: help
+  examples: |
+    - what can you do
+    - help me
+    - show options
+- intent: get_announcements
+  examples: |
+    - show announcements
+    - any notices today?
+    - department announcements
+- intent: get_events
+  examples: |
+    - upcoming events
+    - show college events
+- intent: get_fees
+  examples: |
+    - my fees status
+    - show my fees
+- intent: get_students
+  examples: |
+    - list students
+    - show student list
+- intent: get_teachers
+  examples: |
+    - list teachers
+    - who are the teachers?
+- intent: update_from_pdf
+  examples: |
+    - update data from this pdf
+    - upload pdf to update records

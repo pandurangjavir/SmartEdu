@@ -1,0 +1,54 @@
+{
+  "type": "MaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "back": 0,
+        "get_announcements": 1,
+        "get_events": 2,
+        "get_fees": 3,
+        "get_students": 4,
+        "get_teachers": 5,
+        "goodbye": 6,
+        "greet": 7,
+        "help": 8,
+        "nlu_fallback": 9,
+        "out_of_scope": 10,
+        "restart": 11,
+        "session_start": 12,
+        "update_from_pdf": 13
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_get_announcements": 13,
+        "action_get_events": 14,
+        "action_get_fees": 15,
+        "action_get_students": 16,
+        "action_get_teachers": 17,
+        "action_update_from_pdf": 18,
+        "utter_goodbye": 19,
+        "utter_greet": 20,
+        "utter_help": 21
+      },
+      "entities": {},
+      "slots": {},
+      "active_loop": {}
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 5
+}

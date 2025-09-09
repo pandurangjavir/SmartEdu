@@ -1,0 +1,26 @@
+intents:
+  - greet
+  - goodbye
+  - help
+  - get_announcements
+  - get_events
+  - get_fees
+  - get_students
+  - get_teachers
+  - update_from_pdf
+
+responses:
+  utter_greet:
+    - text: "Hello! I am SmartEdu Bot. How can I assist you today?"
+  utter_goodbye:
+    - text: "Goodbye! Have a great day."
+  utter_help:
+    - text: "I can help you with announcements, events, fees, students list, teachers list, or updating records."
+
+actions:
+  - action_get_announcements
+  - action_get_events
+  - action_get_fees
+  - action_get_students
+  - action_get_teachers
+  - action_update_from_pdf

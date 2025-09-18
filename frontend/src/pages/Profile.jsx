@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { UserCircleIcon } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const Profile = () => {
-  const { user, updateProfile } = useAuth();
+  const { user } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    first_name: user?.first_name || '',
-    last_name: user?.last_name || '',
-    phone: user?.phone || '',
-    department: user?.department || '',
-    year_of_study: user?.year_of_study || ''
+    name: user?.name || user?.first_name || '',
+    email: user?.email || '',
+    contact: user?.contact || '',
+    username: user?.username || '',
+    password: ''
   });
 
   const handleChange = (e) => {
@@ -26,13 +27,20 @@ const Profile = () => {
     e.preventDefault();
     setLoading(true);
 
-    const result = await updateProfile(formData);
-    
-    if (result.success) {
+    try {
+      await axios.put('/api/principal/profile', formData);
       toast.success('Profile updated successfully!');
       setIsEditing(false);
-    } else {
-      toast.error(result.error);
+      setFormData({
+        name: user?.name || user?.first_name || '',
+        email: user?.email || '',
+        contact: user?.contact || '',
+        username: user?.username || '',
+        password: ''
+      });
+    } catch (error) {
+      console.error('Profile update error:', error);
+      toast.error(error?.response?.data?.msg || 'Failed to update profile');
     }
     
     setLoading(false);
@@ -55,7 +63,7 @@ const Profile = () => {
             </div>
             <div>
               <h2 className="text-xl font-semibold text-gray-900">
-                {user?.first_name} {user?.last_name}
+                {user?.name || user?.first_name}
               </h2>
               <p className="text-gray-600">{user?.email}</p>
               <p className="text-sm text-gray-500 capitalize">{user?.role}</p>
@@ -66,26 +74,12 @@ const Profile = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  First Name
+                  Name
                 </label>
                 <input
                   type="text"
-                  name="first_name"
-                  value={formData.first_name}
-                  onChange={handleChange}
-                  disabled={!isEditing}
-                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  name="last_name"
-                  value={formData.last_name}
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                   disabled={!isEditing}
                   className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
@@ -98,20 +92,22 @@ const Profile = () => {
                 </label>
                 <input
                   type="email"
-                  value={user?.email}
-                  disabled
-                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 text-gray-500"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  disabled={!isEditing}
+                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Phone
+                  Contact
                 </label>
                 <input
                   type="tel"
-                  name="phone"
-                  value={formData.phone}
+                  name="contact"
+                  value={formData.contact}
                   onChange={handleChange}
                   disabled={!isEditing}
                   className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
@@ -120,26 +116,26 @@ const Profile = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Department
+                  Username
                 </label>
                 <input
                   type="text"
-                  name="department"
-                  value={formData.department}
+                  name="username"
+                  value={formData.username}
                   onChange={handleChange}
                   disabled={!isEditing}
                   className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                 />
               </div>
 
-              <div>
+              <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700">
-                  Year of Study
+                  New Password (leave blank to keep current)
                 </label>
                 <input
-                  type="number"
-                  name="year_of_study"
-                  value={formData.year_of_study}
+                  type="password"
+                  name="password"
+                  value={formData.password}
                   onChange={handleChange}
                   disabled={!isEditing}
                   className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
@@ -155,11 +151,11 @@ const Profile = () => {
                     onClick={() => {
                       setIsEditing(false);
                       setFormData({
-                        first_name: user?.first_name || '',
-                        last_name: user?.last_name || '',
-                        phone: user?.phone || '',
-                        department: user?.department || '',
-                        year_of_study: user?.year_of_study || ''
+                        name: user?.name || user?.first_name || '',
+                        email: user?.email || '',
+                        contact: user?.contact || '',
+                        username: user?.username || '',
+                        password: ''
                       });
                     }}
                     className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"

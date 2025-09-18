@@ -8,7 +8,7 @@
 -- Principal table
 CREATE TABLE IF NOT EXISTS Principal (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     contact VARCHAR(15) NOT NULL,
     username VARCHAR(100) UNIQUE NOT NULL,
@@ -348,6 +348,18 @@ CREATE TABLE IF NOT EXISTS Fees_BE_CSE (
 -- =============================================
 -- COMMUNICATION TABLES
 -- =============================================
+
+-- General announcements table (for principal)
+CREATE TABLE IF NOT EXISTS announcements (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    message TEXT NOT NULL,
+    target_audience ENUM('all', 'students', 'teachers', 'hods') NOT NULL DEFAULT 'all',
+    created_by INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (created_by) REFERENCES Principal(id) ON DELETE CASCADE
+);
 
 -- Notifications table (branch-specific)
 CREATE TABLE IF NOT EXISTS Notifications_CSE (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
   HomeIcon,
@@ -8,11 +8,13 @@ import {
   AcademicCapIcon,
   UserGroupIcon,
   UserIcon,
-  BriefcaseIcon
+  BriefcaseIcon,
+  ArrowLeftOnRectangleIcon
 } from '@heroicons/react/24/outline';
 
 const Sidebar = () => {
-  const { user, isAdmin, isTeacher, isStudent } = useAuth();
+  const { user, isAdmin, isTeacher, isStudent, logout } = useAuth();
+  const navigate = useNavigate();
   const location = useLocation();
 
   const menuItems = [
@@ -35,10 +37,16 @@ const Sidebar = () => {
       roles: ['hod']
     },
     {
+      name: 'Principal Dashboard',
+      href: '/principal',
+      icon: BriefcaseIcon,
+      roles: ['principal']
+    },
+    {
       name: 'AI Chatbot',
       href: '/chatbot',
       icon: ChatBubbleLeftRightIcon,
-      roles: ['student', 'teacher', 'admin', 'hod']
+      roles: ['student', 'teacher', 'admin', 'hod', 'principal']
     },
     {
       name: 'AI Services',
@@ -62,13 +70,22 @@ const Sidebar = () => {
       name: 'Profile',
       href: '/profile',
       icon: UserIcon,
-      roles: ['student', 'teacher', 'admin', 'hod']
+      roles: ['student', 'teacher', 'admin', 'hod', 'principal']
     }
   ];
 
-  const filteredMenuItems = menuItems.filter(item => 
+  let filteredMenuItems = menuItems.filter(item => 
     item.roles.includes(user?.role)
   );
+
+  // Principal-specific sidebar: only Dashboard, AI Chatbot, Profile
+  if (user?.role === 'principal') {
+    filteredMenuItems = [
+      { name: 'Dashboard', href: '/principal', icon: HomeIcon },
+      { name: 'AI Chatbot', href: '/chatbot', icon: ChatBubbleLeftRightIcon },
+      { name: 'Profile', href: '/profile', icon: UserIcon }
+    ];
+  }
 
   return (
     <div className="w-64 bg-white shadow-sm border-r border-gray-200 min-h-screen">
@@ -92,6 +109,17 @@ const Sidebar = () => {
             );
           })}
         </nav>
+        {user?.role === 'principal' && (
+          <div className="mt-6 pt-4 border-t border-gray-200">
+            <button
+              onClick={() => { logout(); navigate('/login'); }}
+              className="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+            >
+              <ArrowLeftOnRectangleIcon className="h-5 w-5 mr-3" />
+              Logout
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

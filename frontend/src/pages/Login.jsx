@@ -63,6 +63,7 @@ const Login = () => {
         if (formData.role === 'admin') navigate('/admin');
         else if (formData.role === 'teacher') navigate('/teacher');
         else if (formData.role === 'hod') navigate('/hod');
+        else if (formData.role === 'principal') navigate('/principal');
         else navigate('/dashboard');
       } else {
         toast.error(result.error || 'Login failed');

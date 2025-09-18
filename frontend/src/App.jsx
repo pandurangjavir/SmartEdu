@@ -23,6 +23,7 @@ import HODReports from './pages/HODReports';
 import HODAnalytics from './pages/HODAnalytics';
 import HODTasks from './pages/HODTasks';
 import AdminUsers from './pages/AdminUsers';
+import PrincipalDashboard from './pages/PrincipalDashboard';
 
 const PrivateRoute = ({ children, allowedRoles = [] }) => {
   const { user, loading, isAuthenticated } = useAuth();
@@ -39,6 +40,7 @@ const PrivateRoute = ({ children, allowedRoles = [] }) => {
     if (role === 'admin') return '/admin';
     if (role === 'teacher') return '/teacher';
     if (role === 'hod') return '/hod';
+    if (role === 'principal') return '/principal';
     return '/dashboard';
   };
 
@@ -158,6 +160,13 @@ function App() {
             <PrivateRoute allowedRoles={['hod']}>
               <AppLayout>
                 <HODTasks />
+              </AppLayout>
+            </PrivateRoute>
+          } />
+          <Route path="/principal" element={
+            <PrivateRoute allowedRoles={['principal']}>
+              <AppLayout>
+                <PrincipalDashboard />
               </AppLayout>
             </PrivateRoute>
           } />

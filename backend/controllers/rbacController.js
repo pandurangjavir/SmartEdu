@@ -16,8 +16,222 @@ function tableFor(base, year, branch) {
 // Principal
 async function principalListHODs(req, res) {
   try {
-    const [rows] = await pool.query('SELECT * FROM hods');
-    return res.json(rows);
+    const { q = '', page = 1, pageSize = 10, branch } = req.query;
+    const query = `%${q}%`;
+    const clauses = [];
+    const params = [];
+    if (q) {
+      clauses.push('(name LIKE ? OR email LIKE ? OR username LIKE ? OR branch LIKE ?)');
+      params.push(query, query, query, query);
+    }
+    if (branch) {
+      clauses.push('branch = ?');
+      params.push(String(branch).toUpperCase());
+    }
+    const where = clauses.length ? `WHERE ${clauses.join(' AND ')}` : '';
+
+    const [[countRow]] = await pool.query(`SELECT COUNT(*) as total FROM HODs ${where}`, params);
+    const limit = Math.max(1, Math.min(100, parseInt(pageSize, 10) || 10));
+    const offset = Math.max(0, (parseInt(page, 10) - 1) * limit);
+    const [rows] = await pool.query(`SELECT * FROM HODs ${where} ORDER BY id DESC LIMIT ? OFFSET ?`, [...params, limit, offset]);
+    return res.json({ rows, total: countRow.total });
+  } catch (e) {
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
+async function principalGetHOD(req, res) {
+  try {
+    const { id } = req.params;
+    const [rows] = await pool.query('SELECT * FROM HODs WHERE id = ?', [id]);
+    if (!rows.length) return res.status(404).json({ msg: 'Not found' });
+    return res.json(rows[0]);
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+// Principal: manage HODs
+async function principalCreateHOD(req, res) {
+  try {
+    const { name, email, contact, username, password, branch } = req.body;
+    if (!name || !email || !username || !branch) return res.status(400).json({ msg: 'name, email, username, branch are required' });
+    if (!/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ msg: 'Invalid email' });
+    const hash = await bcrypt.hash(password || 'password', 10);
+    const [result] = await pool.query(
+      'INSERT INTO HODs (name, email, contact, username, password, branch) VALUES (?, ?, ?, ?, ?, ?)',
+      [name, email, contact || null, username, hash, branch.toUpperCase()]
+    );
+    return res.status(201).json({ id: result.insertId, name, email, contact: contact || null, username, branch: branch.toUpperCase() });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+async function principalUpdateHOD(req, res) {
+  try {
+    const { id } = req.params;
+    const { name, email, contact, username, branch } = req.body;
+    if (!name && !email && !contact && !username && !branch) return res.status(400).json({ msg: 'Nothing to update' });
+    if (email && !/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ msg: 'Invalid email' });
+    const fields = [];
+    const params = [];
+    if (name !== undefined) { fields.push('name = ?'); params.push(name); }
+    if (email !== undefined) { fields.push('email = ?'); params.push(email); }
+    if (contact !== undefined) { fields.push('contact = ?'); params.push(contact); }
+    if (username !== undefined) { fields.push('username = ?'); params.push(username); }
+    if (branch !== undefined) { fields.push('branch = ?'); params.push(branch.toUpperCase()); }
+    const sql = `UPDATE HODs SET ${fields.join(', ')}, updated_at = NOW() WHERE id = ?`;
+    params.push(id);
+    const [result] = await pool.query(sql, params);
+    if (result.affectedRows === 0) return res.status(404).json({ msg: 'Not found' });
+    return res.json({ msg: 'HOD updated' });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+async function principalDeleteHOD(req, res) {
+  try {
+    const { id } = req.params;
+    const [result] = await pool.query('DELETE FROM HODs WHERE id = ?', [id]);
+    if (result.affectedRows === 0) return res.status(404).json({ msg: 'Not found' });
+    return res.json({ msg: 'HOD deleted' });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+// Principal: manage Teachers per department
+async function principalCreateTeacher(req, res) {
+  try {
+    const { branch } = req.params;
+    const { name, email, contact, username, subject, password } = req.body;
+    if (!name || !email || !username) return res.status(400).json({ msg: 'name, email, username are required' });
+    if (!/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ msg: 'Invalid email' });
+    if (contact && !/^\+?[0-9\-\s]{7,15}$/.test(contact)) return res.status(400).json({ msg: 'Invalid contact' });
+    const hash = await bcrypt.hash(password || 'password', 10);
+    const table = `Teachers_${branch.toUpperCase()}`;
+    const [result] = await pool.query(
+      `INSERT INTO ${table} (name, email, contact, username, password, subject) VALUES (?, ?, ?, ?, ?, ?)`,
+      [name, email, contact || null, username, hash, subject || null]
+    );
+    return res.status(201).json({ id: result.insertId, name, email, contact: contact || null, username, subject: subject || null });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+async function principalUpdateTeacher(req, res) {
+  try {
+    const { branch, id } = req.params;
+    const { name, email, contact, username, subject } = req.body;
+    if (!name && !email && !contact && !username && !subject) return res.status(400).json({ msg: 'Nothing to update' });
+    if (email && !/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ msg: 'Invalid email' });
+    if (contact && !/^\+?[0-9\-\s]{7,15}$/.test(contact)) return res.status(400).json({ msg: 'Invalid contact' });
+    const fields = [];
+    const params = [];
+    if (name !== undefined) { fields.push('name = ?'); params.push(name); }
+    if (email !== undefined) { fields.push('email = ?'); params.push(email); }
+    if (contact !== undefined) { fields.push('contact = ?'); params.push(contact); }
+    if (username !== undefined) { fields.push('username = ?'); params.push(username); }
+    if (subject !== undefined) { fields.push('subject = ?'); params.push(subject); }
+    const table = `Teachers_${branch.toUpperCase()}`;
+    const sql = `UPDATE ${table} SET ${fields.join(', ')}, updated_at = NOW() WHERE id = ?`;
+    params.push(id);
+    const [result] = await pool.query(sql, params);
+    if (result.affectedRows === 0) return res.status(404).json({ msg: 'Not found' });
+    return res.json({ msg: 'Teacher updated' });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+async function principalDeleteTeacher(req, res) {
+  try {
+    const { branch, id } = req.params;
+    const table = `Teachers_${branch.toUpperCase()}`;
+    const [result] = await pool.query(`DELETE FROM ${table} WHERE id = ?`, [id]);
+    if (result.affectedRows === 0) return res.status(404).json({ msg: 'Not found' });
+    return res.json({ msg: 'Teacher deleted' });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+// Principal: manage Students per department/year
+async function principalCreateStudent(req, res) {
+  try {
+    const { branch, year } = req.params;
+    const { roll_no, name, email, contact, username, password, admission_year } = req.body;
+    if (!['SY','TY','BE'].includes(year)) return res.status(400).json({ msg: 'Invalid year' });
+    if (!roll_no || !name || !username) return res.status(400).json({ msg: 'roll_no, name, username are required' });
+    if (email && !/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ msg: 'Invalid email' });
+    if (contact && !/^\+?[0-9\-\s]{7,15}$/.test(contact)) return res.status(400).json({ msg: 'Invalid contact' });
+    const table = tableFor('students', year, branch);
+    const hash = await bcrypt.hash(password || 'password', 10);
+    const [result] = await pool.query(`INSERT INTO ${table} (roll_no, name, email, contact, username, password, admission_year) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [roll_no, name, email || null, contact || null, username, hash, admission_year || null]
+    );
+    return res.status(201).json({ roll_no, name, email: email || null, contact: contact || null, username, admission_year: admission_year || null });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+async function principalUpdateStudent(req, res) {
+  try {
+    const { branch, year, rollNo } = req.params;
+    const { name, email, contact, username, admission_year } = req.body;
+    if (!['SY','TY','BE'].includes(year)) return res.status(400).json({ msg: 'Invalid year' });
+    if (!name && !email && !contact && !username && admission_year === undefined) return res.status(400).json({ msg: 'Nothing to update' });
+    if (email && !/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ msg: 'Invalid email' });
+    if (contact && !/^\+?[0-9\-\s]{7,15}$/.test(contact)) return res.status(400).json({ msg: 'Invalid contact' });
+    const table = tableFor('students', year, branch);
+    const fields = [];
+    const params = [];
+    if (name !== undefined) { fields.push('name = ?'); params.push(name); }
+    if (email !== undefined) { fields.push('email = ?'); params.push(email); }
+    if (contact !== undefined) { fields.push('contact = ?'); params.push(contact); }
+    if (username !== undefined) { fields.push('username = ?'); params.push(username); }
+    if (admission_year !== undefined) { fields.push('admission_year = ?'); params.push(admission_year); }
+    const sql = `UPDATE ${table} SET ${fields.join(', ')}, updated_at = NOW() WHERE roll_no = ?`;
+    params.push(rollNo);
+    const [result] = await pool.query(sql, params);
+    if (result.affectedRows === 0) return res.status(404).json({ msg: 'Not found' });
+    return res.json({ msg: 'Student updated' });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+async function principalDeleteStudent(req, res) {
+  try {
+    const { branch, year, rollNo } = req.params;
+    if (!['SY','TY','BE'].includes(year)) return res.status(400).json({ msg: 'Invalid year' });
+    const table = tableFor('students', year, branch);
+    const [result] = await pool.query(`DELETE FROM ${table} WHERE roll_no = ?`, [rollNo]);
+    if (result.affectedRows === 0) return res.status(404).json({ msg: 'Not found' });
+    return res.json({ msg: 'Student deleted' });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+// Principal: Stats - counts for departments, teachers, and HODs
+async function principalStats(req, res) {
+  try {
+    // Departments are inferred from distinct branches across HODs or events tables; fallback to known list
+    const knownBranches = ['CSE', 'ENTC', 'CIVIL', 'MECH', 'AIDS', 'ELECTRICAL'];
+    let departments = knownBranches;
+    try {
+      const [rows] = await pool.query('SELECT DISTINCT branch FROM HODs');
+      const list = rows.map(r => (r.branch || '').toUpperCase()).filter(Boolean);
+      if (list.length) departments = list;
+    } catch {}
+
+    let totalTeachers = 0;
+    let totalStudents = 0;
+    for (const br of departments) {
+      try {
+        const [rows] = await pool.query(`SELECT COUNT(*) as count FROM Teachers_${br}`);
+        totalTeachers += (rows?.[0]?.count || 0);
+      } catch {}
+      // Sum students across SY/TY/BE per branch
+      // Students per branch will also be accounted for by a global information_schema scan below
+    }
+    const [hodRows] = await pool.query('SELECT COUNT(*) as count FROM HODs');
+    const totalHods = hodRows?.[0]?.count || 0;
+
+    // Total students = sum of three year tables for CSE (since only CSE data is provided)
+    // Explicitly use provided lowercase table names
+    let studentsSY_CSE = 0, studentsTY_CSE = 0, studentsBE_CSE = 0;
+    try { const [r] = await pool.query('SELECT COUNT(*) as count FROM students_sy_cse'); studentsSY_CSE = r?.[0]?.count || 0; } catch {}
+    try { const [r] = await pool.query('SELECT COUNT(*) as count FROM students_ty_cse'); studentsTY_CSE = r?.[0]?.count || 0; } catch {}
+    try { const [r] = await pool.query('SELECT COUNT(*) as count FROM students_be_cse'); studentsBE_CSE = r?.[0]?.count || 0; } catch {}
+    totalStudents = studentsSY_CSE + studentsTY_CSE + studentsBE_CSE;
+
+    return res.json({ departmentsCount: departments.length, totalTeachers, totalHods, totalStudents, departments, studentsBreakdown: { SY_CSE: studentsSY_CSE, TY_CSE: studentsTY_CSE, BE_CSE: studentsBE_CSE } });
   } catch (e) {
     return res.status(500).json({ msg: 'Server error' });
   }
@@ -32,6 +246,33 @@ async function principalListTeachers(req, res) {
   }
 }
 
+// Principal: list teachers by branch
+async function principalListTeachersByBranch(req, res) {
+  try {
+    const { branch } = req.params;
+    const { q = '', page = 1, pageSize = 10 } = req.query;
+    const table = `Teachers_${(branch || 'CSE').toUpperCase()}`;
+    const query = `%${q}%`;
+    const where = q ? 'WHERE name LIKE ? OR email LIKE ? OR username LIKE ? OR subject LIKE ?' : '';
+    const params = q ? [query, query, query, query] : [];
+    const [[countRow]] = await pool.query(`SELECT COUNT(*) as total FROM ${table} ${where}`, params);
+    const limit = Math.max(1, Math.min(100, parseInt(pageSize, 10) || 10));
+    const offset = Math.max(0, (parseInt(page, 10) - 1) * limit);
+    const [rows] = await pool.query(`SELECT * FROM ${table} ${where} ORDER BY id DESC LIMIT ? OFFSET ?`, [...params, limit, offset]);
+    return res.json({ rows, total: countRow.total });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+async function principalGetTeacher(req, res) {
+  try {
+    const { branch, id } = req.params;
+    const table = `Teachers_${(branch || 'CSE').toUpperCase()}`;
+    const [rows] = await pool.query(`SELECT * FROM ${table} WHERE id = ?`, [id]);
+    if (!rows.length) return res.status(404).json({ msg: 'Not found' });
+    return res.json(rows[0]);
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
 async function principalListStudents(req, res) {
   try {
     const [sy] = await pool.query('SELECT *, "SY" as year FROM students_sy_cse');
@@ -41,6 +282,33 @@ async function principalListStudents(req, res) {
   } catch (e) {
     return res.status(500).json({ msg: 'Server error' });
   }
+}
+
+// Principal: list students by branch/year
+async function principalListStudentsByBranchYear(req, res) {
+  try {
+    const { branch, year } = req.params;
+    const { q = '', page = 1, pageSize = 10 } = req.query;
+    const table = tableFor('students', year, branch);
+    const query = `%${q}%`;
+    const where = q ? 'WHERE roll_no LIKE ? OR name LIKE ? OR email LIKE ? OR username LIKE ?' : '';
+    const params = q ? [query, query, query, query] : [];
+    const [[countRow]] = await pool.query(`SELECT COUNT(*) as total FROM ${table} ${where}`, params);
+    const limit = Math.max(1, Math.min(100, parseInt(pageSize, 10) || 10));
+    const offset = Math.max(0, (parseInt(page, 10) - 1) * limit);
+    const [rows] = await pool.query(`SELECT * FROM ${table} ${where} ORDER BY roll_no ASC LIMIT ? OFFSET ?`, [...params, limit, offset]);
+    return res.json({ rows, total: countRow.total });
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
+}
+
+async function principalGetStudent(req, res) {
+  try {
+    const { branch, year, rollNo } = req.params;
+    const table = tableFor('students', year, branch);
+    const [rows] = await pool.query(`SELECT * FROM ${table} WHERE roll_no = ?`, [rollNo]);
+    if (!rows.length) return res.status(404).json({ msg: 'Not found' });
+    return res.json(rows[0]);
+  } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
 }
 
 async function principalListAttendance(req, res) {
@@ -499,16 +767,122 @@ async function studentNotifications(req, res) {
   } catch (e) { return res.status(500).json({ msg: 'Server error' }); }
 }
 
+// Principal Profile Update
+async function principalUpdateProfile(req, res) {
+  try {
+    const { name, email, contact, username, password } = req.body;
+    const userId = req.user.id;
+    
+    let updateQuery = 'UPDATE Principal SET name = ?, email = ?, contact = ?, username = ?';
+    let queryParams = [name, email, contact, username];
+    
+    if (password && password.trim() !== '') {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      updateQuery += ', password = ?';
+      queryParams.push(hashedPassword);
+    }
+    
+    updateQuery += ' WHERE id = ?';
+    queryParams.push(userId);
+    
+    await pool.query(updateQuery, queryParams);
+    return res.json({ msg: 'Profile updated successfully' });
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
+// Principal List Announcements
+async function principalListAnnouncements(req, res) {
+  try {
+    // Get general announcements
+    const [generalAnnouncements] = await pool.query('SELECT *, "general" as source FROM announcements ORDER BY created_at DESC');
+    
+    // Get department-specific announcements from all branches
+    const branches = ['CSE', 'ENTC', 'CIVIL', 'MECH', 'AIDS', 'ELECTRICAL'];
+    let allDeptAnnouncements = [];
+    
+    for (const branch of branches) {
+      try {
+        const [deptAnnouncements] = await pool.query(
+          `SELECT *, "${branch}" as source, "department" as type FROM Notifications_${branch} ORDER BY created_at DESC`
+        );
+        allDeptAnnouncements = allDeptAnnouncements.concat(deptAnnouncements);
+      } catch (e) {
+        // Table might not exist for some branches, continue
+        console.log(`Table Notifications_${branch} not found, skipping...`);
+      }
+    }
+    
+    // Combine and sort all announcements by created_at
+    const allAnnouncements = [...generalAnnouncements, ...allDeptAnnouncements]
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    
+    return res.json({ rows: allAnnouncements });
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
+// Principal Create Announcement
+async function principalCreateAnnouncement(req, res) {
+  try {
+    const { title, message, target_audience } = req.body;
+    const userId = req.user.id;
+    
+    await pool.query(
+      'INSERT INTO announcements (title, message, target_audience, created_by, created_at) VALUES (?, ?, ?, ?, NOW())',
+      [title, message, target_audience, userId]
+    );
+    
+    return res.json({ msg: 'Announcement created successfully' });
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
+// Principal Delete Announcement
+async function principalDeleteAnnouncement(req, res) {
+  try {
+    const { id } = req.params;
+    
+    await pool.query('DELETE FROM announcements WHERE id = ?', [id]);
+    
+    return res.json({ msg: 'Announcement deleted successfully' });
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
 module.exports = {
   // Principal
   principalListHODs,
+  principalGetHOD,
+  principalCreateHOD,
+  principalUpdateHOD,
+  principalDeleteHOD,
   principalListTeachers,
+  principalListTeachersByBranch,
+  principalGetTeacher,
+  principalCreateTeacher,
+  principalUpdateTeacher,
+  principalDeleteTeacher,
   principalListStudents,
+  principalListStudentsByBranchYear,
+  principalGetStudent,
+  principalCreateStudent,
+  principalUpdateStudent,
+  principalDeleteStudent,
   principalListAttendance,
   principalListMarks,
   principalListFees,
   principalListEvents,
   principalListNotifications,
+  principalStats,
   // HOD
   hodListTeachers,
   hodListStudents,
@@ -541,6 +915,11 @@ module.exports = {
   studentFees,
   studentEvents,
   studentNotifications,
+  // Principal Profile and Announcements
+  principalUpdateProfile,
+  principalListAnnouncements,
+  principalCreateAnnouncement,
+  principalDeleteAnnouncement,
 };
 
 

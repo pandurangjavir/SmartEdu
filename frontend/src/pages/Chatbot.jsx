@@ -57,7 +57,29 @@ const Chatbot = () => {
         timestamp: new Date().toISOString()
       };
 
-      setMessages(prev => [...prev, aiMessage]);
+      const updates = [aiMessage];
+      if (response.data.table) {
+        updates.push({
+          id: Date.now() + 2,
+          sender: 'ai',
+          type: 'table',
+          table: response.data.table,
+          timestamp: new Date().toISOString()
+        });
+      }
+      if (Array.isArray(response.data.tables)) {
+        response.data.tables.forEach((tbl, idx) => {
+          updates.push({
+            id: Date.now() + 3 + idx,
+            sender: 'ai',
+            type: 'table',
+            table: tbl,
+            timestamp: new Date().toISOString()
+          });
+        });
+      }
+
+      setMessages(prev => [...prev, ...updates]);
       toast.success('Message sent successfully!');
     } catch (error) {
       toast.error('Failed to send message');
@@ -257,31 +279,56 @@ const Chatbot = () => {
             key={message.id}
             className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
           >
-            <div
-              className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                message.sender === 'user'
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-white text-gray-900 shadow-sm border border-gray-200'
-              }`}
-            >
-              <div className="flex items-start justify-between">
-                <p className="text-sm flex-1">{message.content}</p>
-                {message.sender === 'ai' && (
-                  <button
-                    onClick={() => speakMessage(message.content)}
-                    disabled={isPlaying}
-                    className="ml-2 p-1 text-gray-500 hover:text-gray-700 disabled:opacity-50"
-                  >
-                    <SpeakerWaveIcon className="h-4 w-4" />
-                  </button>
-                )}
+            {message.type === 'table' ? (
+              <div className="bg-white text-gray-900 shadow-sm border border-gray-200 rounded-lg p-3 max-w-full overflow-x-auto">
+                <p className="text-sm font-semibold mb-2">{message.table?.title || 'Table'}</p>
+                <table className="min-w-[600px] table-auto border-collapse text-sm">
+                  <thead>
+                    <tr>
+                      {message.table?.columns?.map((col) => (
+                        <th key={col.key} className="border-b px-3 py-2 text-left font-medium text-gray-700">{col.label}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {message.table?.rows?.map((row, idx) => (
+                      <tr key={idx} className="odd:bg-gray-50">
+                        {message.table.columns.map((col) => (
+                          <td key={col.key} className="border-b px-3 py-2 whitespace-nowrap">{row[col.key] ?? '-'}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="text-xs mt-2 text-gray-500">{new Date(message.timestamp).toLocaleTimeString()}</p>
               </div>
-              <p className={`text-xs mt-1 ${
-                message.sender === 'user' ? 'text-primary-200' : 'text-gray-500'
-              }`}>
-                {new Date(message.timestamp).toLocaleTimeString()}
-              </p>
-            </div>
+            ) : (
+              <div
+                className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                  message.sender === 'user'
+                    ? 'bg-primary-600 text-white'
+                    : 'bg-white text-gray-900 shadow-sm border border-gray-200'
+                }`}
+              >
+                <div className="flex items-start justify-between">
+                  <p className="text-sm flex-1">{message.content}</p>
+                  {message.sender === 'ai' && (
+                    <button
+                      onClick={() => speakMessage(message.content)}
+                      disabled={isPlaying}
+                      className="ml-2 p-1 text-gray-500 hover:text-gray-700 disabled:opacity-50"
+                    >
+                      <SpeakerWaveIcon className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+                <p className={`text-xs mt-1 ${
+                  message.sender === 'user' ? 'text-primary-200' : 'text-gray-500'
+                }`}>
+                  {new Date(message.timestamp).toLocaleTimeString()}
+                </p>
+              </div>
+            )}
           </div>
         ))}
         

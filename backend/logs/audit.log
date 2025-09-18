@@ -1,0 +1,2 @@
+{"timestamp":"2025-09-16T10:50:51.067Z","userId":1,"role":"hod","method":"POST","path":"/api/hod/students/CSE/BE","ip":"::1","body":{"roll_no":"4","name":"Dhiraj Kakade","email":"dk@gmail.com","contact":"9322360431","username":"dk","admission_year":"2022"},"params":{}}
+{"timestamp":"2025-09-16T11:05:51.566Z","userId":1,"role":"hod","method":"POST","path":"/api/hod/students/CSE/TY","ip":"::1","body":{"roll_no":"3","name":"Laxmi","email":"laxmi@123gamil.com","contact":"1231231231","username":"laxmi","admission_year":"2023"},"params":{}}

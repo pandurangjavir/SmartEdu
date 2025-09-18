@@ -1,3 +1,5 @@
+version: "3.1"
+
 intents:
   - greet
   - goodbye
@@ -5,9 +7,38 @@ intents:
   - get_announcements
   - get_events
   - get_fees
+  - get_marks
+  - get_attendance
   - get_students
   - get_teachers
   - update_from_pdf
+
+slots:
+  role:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+  branch:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+  year:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+  roll_no:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: custom
+  username:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
 
 responses:
   utter_greet:
@@ -21,6 +52,9 @@ actions:
   - action_get_announcements
   - action_get_events
   - action_get_fees
+  - action_get_marks
+  - action_get_attendance
   - action_get_students
   - action_get_teachers
   - action_update_from_pdf
+  - action_session_start

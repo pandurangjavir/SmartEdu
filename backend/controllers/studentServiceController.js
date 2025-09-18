@@ -3,20 +3,160 @@ const { pool } = require('../config/db');
 // Helper: select rows for a student with flexible key names
 async function selectRowsForStudent(tableName, userId) {
   const candidateColumns = ['roll_no', 'student_roll_no', 'student_id', 'rollno', 'sid', 'id'];
+  let lastNonFieldError = null;
   for (const col of candidateColumns) {
     try {
       const [rows] = await pool.query(`SELECT * FROM ${tableName} WHERE ${col} = ? ORDER BY id DESC`, [userId]);
       return rows;
     } catch (e) {
       if (e?.code !== 'ER_BAD_FIELD_ERROR') {
-        throw e;
+        // Keep the last non-field error to decide fallback after loop
+        lastNonFieldError = e;
       }
       // try next column
     }
   }
   // As a last resort, return all rows to avoid a 500 (better to see data than break)
-  const [fallbackRows] = await pool.query(`SELECT * FROM ${tableName} ORDER BY id DESC`);
-  return fallbackRows;
+  try {
+    const [fallbackRows] = await pool.query(`SELECT * FROM ${tableName} ORDER BY id DESC`);
+    return fallbackRows;
+  } catch (e) {
+    // If table doesn't exist or other errors, return empty array instead of throwing
+    return [];
+  }
+}
+
+// Reusable data fetchers for role-aware visibility (used by APIs and chatbot)
+async function fetchMarksData(user) {
+  const { id: userId, role, table } = user;
+  if (role === 'student') {
+    let marksTable = 'Marks_TY_CSE';
+    if (table === 'Students_SY_CSE') marksTable = 'Marks_SY_CSE';
+    else if (table === 'Students_TY_CSE') marksTable = 'Marks_TY_CSE';
+    else if (table === 'Students_BE_CSE') marksTable = 'Marks_BE_CSE';
+    const rows = await selectRowsForStudent(marksTable, userId);
+    return rows;
+  }
+  if (role === 'teacher' || role === 'hod' || role === 'principal') {
+    const allMarks = [];
+    const classes = [
+      { table: 'Marks_SY_CSE', studentTable: 'Students_SY_CSE', year: 'SY' },
+      { table: 'Marks_TY_CSE', studentTable: 'Students_TY_CSE', year: 'TY' },
+      { table: 'Marks_BE_CSE', studentTable: 'Students_BE_CSE', year: 'BE' }
+    ];
+    for (const cls of classes) {
+      try {
+        const [rows] = await pool.query(
+          `SELECT m.*, s.name AS student_name, s.roll_no AS student_roll_no
+          FROM ${cls.table} m
+             JOIN ${cls.studentTable} s ON m.student_id = s.roll_no
+             ORDER BY CAST(s.roll_no AS UNSIGNED) ASC`
+        );
+        allMarks.push(...rows.map(r => ({ ...r, year: cls.year })));
+      } catch (e) {
+        try {
+          const [rows] = await pool.query(`SELECT * FROM ${cls.table} ORDER BY id DESC`);
+          allMarks.push(
+            ...rows.map(r => ({
+              ...r,
+              year: cls.year,
+              student_roll_no: r.roll_no || r.student_roll_no || r.student_id || r.sid || r.id,
+            }))
+          );
+        } catch {}
+      }
+    }
+    return allMarks;
+  }
+  throw Object.assign(new Error('Access denied'), { statusCode: 403 });
+}
+
+async function fetchAttendanceData(user) {
+  const { id: userId, role, table } = user;
+  if (role === 'student') {
+    let attendanceTable = 'Attendance_TY_CSE';
+    if (table === 'Students_SY_CSE') attendanceTable = 'Attendance_SY_CSE';
+    else if (table === 'Students_TY_CSE') attendanceTable = 'Attendance_TY_CSE';
+    else if (table === 'Students_BE_CSE') attendanceTable = 'Attendance_BE_CSE';
+    const rows = await selectRowsForStudent(attendanceTable, userId);
+    return rows;
+  }
+  if (role === 'teacher' || role === 'hod' || role === 'principal') {
+    const allAttendance = [];
+    const classes = [
+      { table: 'Attendance_SY_CSE', studentTable: 'Students_SY_CSE', year: 'SY' },
+      { table: 'Attendance_TY_CSE', studentTable: 'Students_TY_CSE', year: 'TY' },
+      { table: 'Attendance_BE_CSE', studentTable: 'Students_BE_CSE', year: 'BE' }
+    ];
+    for (const cls of classes) {
+      try {
+        const [rows] = await pool.query(
+          `SELECT a.*, s.name AS student_name, s.roll_no AS student_roll_no
+          FROM ${cls.table} a
+             JOIN ${cls.studentTable} s ON a.student_id = s.roll_no
+             ORDER BY CAST(s.roll_no AS UNSIGNED) ASC`
+        );
+        allAttendance.push(...rows.map(r => ({ ...r, year: cls.year })));
+      } catch (e) {
+        try {
+          const [rows] = await pool.query(`SELECT * FROM ${cls.table} ORDER BY id DESC`);
+          allAttendance.push(
+            ...rows.map(r => ({
+              ...r,
+              year: cls.year,
+              student_roll_no: r.roll_no || r.student_roll_no || r.student_id || r.sid || r.id,
+            }))
+          );
+        } catch {}
+      }
+    }
+    return allAttendance;
+  }
+  throw Object.assign(new Error('Access denied'), { statusCode: 403 });
+}
+
+async function fetchFeesData(user) {
+  const { id: userId, role, table } = user;
+  if (role === 'student') {
+    let feesTable = 'Fees_TY_CSE';
+    if (table === 'Students_SY_CSE') feesTable = 'Fees_SY_CSE';
+    else if (table === 'Students_TY_CSE') feesTable = 'Fees_TY_CSE';
+    else if (table === 'Students_BE_CSE') feesTable = 'Fees_BE_CSE';
+    const rows = await selectRowsForStudent(feesTable, userId);
+    return rows;
+  }
+  if (role === 'teacher' || role === 'hod' || role === 'principal') {
+    const allFees = [];
+    const classes = [
+      { table: 'Fees_SY_CSE', studentTable: 'Students_SY_CSE', year: 'SY' },
+      { table: 'Fees_TY_CSE', studentTable: 'Students_TY_CSE', year: 'TY' },
+      { table: 'Fees_BE_CSE', studentTable: 'Students_BE_CSE', year: 'BE' }
+    ];
+    for (const cls of classes) {
+      try {
+        const [rows] = await pool.query(
+          `SELECT f.*, s.name AS student_name, s.roll_no AS student_roll_no
+          FROM ${cls.table} f
+             JOIN ${cls.studentTable} s ON f.student_id = s.roll_no
+             ORDER BY CAST(s.roll_no AS UNSIGNED) ASC`
+        );
+        allFees.push(...rows.map(r => ({ ...r, year: cls.year })));
+      } catch (e) {
+        try {
+          const [rows] = await pool.query(`SELECT * FROM ${cls.table} ORDER BY id DESC`);
+          allFees.push(
+            ...rows.map(r => ({
+              ...r,
+              year: cls.year,
+              student_roll_no: r.roll_no || r.student_roll_no || r.student_id || r.sid || r.id,
+            }))
+          );
+        } catch {}
+      }
+    }
+    return allFees;
+  }
+  throw Object.assign(new Error('Access denied'), { statusCode: 403 });
 }
 
 // Get notifications
@@ -303,18 +443,19 @@ async function getFees(req, res) {
 // Update marks (HOD and Principal only)
 async function updateMarks(req, res) {
   try {
-    const { role } = req.user;
-    const { marksId, year, semester, examType, subject1, subject1Marks, subject2, subject2Marks, subject3, subject3Marks, subject4, subject4Marks, subject5, subject5Marks } = req.body;
+    const { role, branch: userBranch } = req.user;
+    const { marksId, year, branch: bodyBranch, semester, examType, subject1, subject1Marks, subject2, subject2Marks, subject3, subject3Marks, subject4, subject4Marks, subject5, subject5Marks } = req.body;
     
     if (role !== 'hod' && role !== 'principal') {
       return res.status(403).json({ msg: 'Access denied. Only HOD and Principal can edit marks.' });
     }
     
-    // Determine which marks table to update based on year
-    let marksTable = 'Marks_TY_CSE'; // default
-    if (year === 'SY') marksTable = 'Marks_SY_CSE';
-    else if (year === 'TY') marksTable = 'Marks_TY_CSE';
-    else if (year === 'BE') marksTable = 'Marks_BE_CSE';
+    // Determine which marks table to update based on year and branch
+    const branch = (bodyBranch || userBranch || 'CSE').toUpperCase();
+    let marksTable = `Marks_TY_${branch}`;
+    if (year === 'SY') marksTable = `Marks_SY_${branch}`;
+    else if (year === 'TY') marksTable = `Marks_TY_${branch}`;
+    else if (year === 'BE') marksTable = `Marks_BE_${branch}`;
     
     // Calculate total marks and percentage
     const totalMarks = subject1Marks + subject2Marks + subject3Marks + subject4Marks + subject5Marks;
@@ -341,18 +482,19 @@ async function updateMarks(req, res) {
 // Update attendance (HOD and Principal only)
 async function updateAttendance(req, res) {
   try {
-    const { role } = req.user;
-    const { attendanceId, year, semester, subject1Theory, subject1TheoryPresent, subject1Practical, subject1PracticalPresent, subject2Theory, subject2TheoryPresent, subject2Practical, subject2PracticalPresent, subject3Theory, subject3TheoryPresent, subject3Practical, subject3PracticalPresent, subject4Theory, subject4TheoryPresent, subject4Practical, subject4PracticalPresent, subject5Theory, subject5TheoryPresent, subject5Practical, subject5PracticalPresent } = req.body;
+    const { role, branch: userBranch } = req.user;
+    const { attendanceId, year, branch: bodyBranch, semester, subject1Theory, subject1TheoryPresent, subject1Practical, subject1PracticalPresent, subject2Theory, subject2TheoryPresent, subject2Practical, subject2PracticalPresent, subject3Theory, subject3TheoryPresent, subject3Practical, subject3PracticalPresent, subject4Theory, subject4TheoryPresent, subject4Practical, subject4PracticalPresent, subject5Theory, subject5TheoryPresent, subject5Practical, subject5PracticalPresent } = req.body;
     
     if (role !== 'hod' && role !== 'principal') {
       return res.status(403).json({ msg: 'Access denied. Only HOD and Principal can edit attendance.' });
     }
     
-    // Determine which attendance table to update based on year
-    let attendanceTable = 'Attendance_TY_CSE'; // default
-    if (year === 'SY') attendanceTable = 'Attendance_SY_CSE';
-    else if (year === 'TY') attendanceTable = 'Attendance_TY_CSE';
-    else if (year === 'BE') attendanceTable = 'Attendance_BE_CSE';
+    // Determine which attendance table to update based on year and branch
+    const branch = (bodyBranch || userBranch || 'CSE').toUpperCase();
+    let attendanceTable = `Attendance_TY_${branch}`;
+    if (year === 'SY') attendanceTable = `Attendance_SY_${branch}`;
+    else if (year === 'TY') attendanceTable = `Attendance_TY_${branch}`;
+    else if (year === 'BE') attendanceTable = `Attendance_BE_${branch}`;
     
     // Calculate totals
     const totalPresent = subject1TheoryPresent + subject1PracticalPresent + subject2TheoryPresent + subject2PracticalPresent + subject3TheoryPresent + subject3PracticalPresent + subject4TheoryPresent + subject4PracticalPresent + subject5TheoryPresent + subject5PracticalPresent;
@@ -385,18 +527,19 @@ async function updateAttendance(req, res) {
 // Update fees (HOD and Principal only)
 async function updateFees(req, res) {
   try {
-    const { role } = req.user;
-    const { feesId, year, semester, totalFees, paidFees, lastPaidDate, dueDate } = req.body;
+    const { role, branch: userBranch } = req.user;
+    const { feesId, year, branch: bodyBranch, semester, totalFees, paidFees, lastPaidDate, dueDate } = req.body;
     
     if (role !== 'hod' && role !== 'principal') {
       return res.status(403).json({ msg: 'Access denied. Only HOD and Principal can edit fees.' });
     }
     
-    // Determine which fees table to update based on year
-    let feesTable = 'Fees_TY_CSE'; // default
-    if (year === 'SY') feesTable = 'Fees_SY_CSE';
-    else if (year === 'TY') feesTable = 'Fees_TY_CSE';
-    else if (year === 'BE') feesTable = 'Fees_BE_CSE';
+    // Determine which fees table to update based on year and branch
+    const branch = (bodyBranch || userBranch || 'CSE').toUpperCase();
+    let feesTable = `Fees_TY_${branch}`;
+    if (year === 'SY') feesTable = `Fees_SY_${branch}`;
+    else if (year === 'TY') feesTable = `Fees_TY_${branch}`;
+    else if (year === 'BE') feesTable = `Fees_BE_${branch}`;
     
     const remainingFees = totalFees - paidFees;
     
@@ -624,4 +767,4 @@ async function getAllStudentServicesData(req, res) {
   }
 }
 
-module.exports = { getNotifications, getEvents, registerForEvent, getMarks, getAttendance, getFees, updateMarks, updateAttendance, updateFees, getAllStudentServicesData };
+module.exports = { getNotifications, getEvents, registerForEvent, getMarks, getAttendance, getFees, updateMarks, updateAttendance, updateFees, getAllStudentServicesData, fetchMarksData, fetchAttendanceData, fetchFeesData };

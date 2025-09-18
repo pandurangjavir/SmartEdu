@@ -7,6 +7,11 @@ const router = express.Router();
 // Chatbot endpoint to connect with Rasa
 router.post('/', verifyJwt, sendMessage);
 
+// Simple GET to verify chatbot service availability
+router.get('/', (req, res) => {
+  res.status(200).json({ status: 'chatbot route alive' });
+});
+
 // Get chat history (placeholder - would need database storage)
 router.get('/history', verifyJwt, (req, res) => {
   // For now, return empty history since we don't have persistent chat storage

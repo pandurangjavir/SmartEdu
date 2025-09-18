@@ -41,10 +41,32 @@ async function login(req, res) {
 		const isMatch = await bcrypt.compare(password, user.password);
 		if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
 
-		const payload = { id: user.id || user.roll_no, role, table };
+		// Derive contextual attributes used downstream (chatbot, role-based data)
+		const branch = 'cse';
+		const payload = {
+			id: user.id || user.roll_no,
+			role,
+			table,
+			branch,
+			year: role === 'student' ? year : undefined,
+			roll_no: user.roll_no || undefined,
+			username
+		};
 		const token = jwt.sign(payload, process.env.JWT_SECRET || 'secretkey', { expiresIn: '1h' });
 
-		return res.json({ token, role, user: { id: user.id || user.roll_no, name: user.name, email: user.email } });
+		return res.json({ 
+			token, 
+			role, 
+			user: { 
+				id: user.id || user.roll_no, 
+				name: user.name, 
+				email: user.email,
+				branch,
+				year: role === 'student' ? year : undefined,
+				roll_no: user.roll_no || undefined,
+				username
+			} 
+		});
 	} catch (err) {
 		console.error(err);
 		return res.status(500).json({ msg: 'Server error' });

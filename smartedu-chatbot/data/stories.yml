@@ -14,6 +14,16 @@ stories:
   - intent: get_fees
   - action: action_get_fees
 
+- story: marks story
+  steps:
+  - intent: get_marks
+  - action: action_get_marks
+
+- story: attendance story
+  steps:
+  - intent: get_attendance
+  - action: action_get_attendance
+
 - story: students story
   steps:
   - intent: get_students

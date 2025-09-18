@@ -1,6 +1,7 @@
 const express = require('express');
 const { getNotifications, getEvents, registerForEvent, getMarks, getAttendance, getFees, updateMarks, updateAttendance, updateFees, getAllStudentServicesData } = require('../controllers/studentServiceController');
 const { verifyJwt } = require('../middleware/authMiddleware');
+const { requireRole } = require('../middleware/roleMiddleware');
 
 const router = express.Router();
 
@@ -14,8 +15,8 @@ router.get('/fees', verifyJwt, getFees);
 router.get('/all', verifyJwt, getAllStudentServicesData);
 
 // Update routes (HOD and Principal only)
-router.put('/marks', verifyJwt, updateMarks);
-router.put('/attendance', verifyJwt, updateAttendance);
-router.put('/fees', verifyJwt, updateFees);
+router.put('/marks', verifyJwt, requireRole(['hod', 'principal']), updateMarks);
+router.put('/attendance', verifyJwt, requireRole(['hod', 'principal']), updateAttendance);
+router.put('/fees', verifyJwt, requireRole(['hod', 'principal']), updateFees);
 
 module.exports = router;

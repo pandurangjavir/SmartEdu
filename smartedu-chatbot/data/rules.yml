@@ -16,3 +16,13 @@ rules:
   steps:
   - intent: help
   - action: utter_help
+
+- rule: marks
+  steps:
+  - intent: get_marks
+  - action: action_get_marks
+
+- rule: attendance
+  steps:
+  - intent: get_attendance
+  - action: action_get_attendance

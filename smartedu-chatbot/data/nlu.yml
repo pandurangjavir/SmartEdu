@@ -27,6 +27,33 @@ nlu:
   examples: |
     - my fees status
     - show my fees
+    - fees due?
+    - how much fee is pending
+    - what is my fee status
+    - tell me my fees details
+    - do I have any fee due
+    - when is my fee due date
+    - show my payment details
+    - fee payment history
+- intent: get_marks
+  examples: |
+    - show my marks
+    - my result
+    - exam scores
+    - marks for last semester
+    - display my marks
+    - marks details
+    - what are my marks
+    - subject wise marks
+- intent: get_attendance
+  examples: |
+    - show my attendance
+    - attendance status
+    - how many classes present
+    - my attendance percentage
+    - attendance for this semester
+    - display my attendance
+    - what is my attendance
 - intent: get_students
   examples: |
     - list students

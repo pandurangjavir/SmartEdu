@@ -1,2 +1,4 @@
-rasa-sdk==3.6.15
+rasa==3.6.2
+rasa-sdk==3.6.2
 requests==2.31.0
+PyYAML==5.4.1

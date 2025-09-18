@@ -1,7 +1,16 @@
 const { pool } = require('../config/db');
+const bcrypt = require('bcrypt');
+
+function capitalizeBase(base) {
+  const lower = (base || '').toLowerCase();
+  return lower.charAt(0).toUpperCase() + lower.slice(1);
+}
 
 function tableFor(base, year, branch) {
-  return `${base}_${(year || '').toLowerCase()}_${(branch || '').toLowerCase()}`;
+  const Base = capitalizeBase(base);
+  const YEAR = (year || '').toUpperCase();
+  const BRANCH = (branch || '').toUpperCase();
+  return `${Base}_${YEAR}_${BRANCH}`;
 }
 
 // Principal
@@ -88,8 +97,8 @@ async function principalListNotifications(req, res) {
 // HOD (branch)
 async function hodListTeachers(req, res) {
   try {
-    // Only CSE exists
-    const [rows] = await pool.query('SELECT * FROM teachers_cse');
+    const BRANCH = (req.params.branch || req.hodBranch || 'CSE').toUpperCase();
+    const [rows] = await pool.query(`SELECT * FROM Teachers_${BRANCH}`);
     return res.json(rows);
   } catch (e) {
     return res.status(500).json({ msg: 'Server error' });
@@ -180,7 +189,8 @@ async function hodFeesDefaulters(req, res) {
 
 async function hodListEvents(req, res) {
   try {
-    const [rows] = await pool.query('SELECT * FROM events_cse');
+    const BRANCH = (req.params.branch || req.hodBranch || 'CSE').toUpperCase();
+    const [rows] = await pool.query(`SELECT * FROM Events_${BRANCH}`);
     return res.json(rows);
   } catch (e) {
     return res.status(500).json({ msg: 'Server error' });
@@ -189,8 +199,138 @@ async function hodListEvents(req, res) {
 
 async function hodListNotifications(req, res) {
   try {
-    const [rows] = await pool.query('SELECT * FROM notifications_cse');
+    const BRANCH = (req.params.branch || req.hodBranch || 'CSE').toUpperCase();
+    const [rows] = await pool.query(`SELECT * FROM Notifications_${BRANCH}`);
     return res.json(rows);
+  } catch (e) {
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
+// HOD: Update a teacher's basic profile fields
+async function hodUpdateTeacher(req, res) {
+  try {
+    const { id } = req.params;
+    const { name, email, contact, username, subject } = req.body;
+    if (!name && !email && !contact && !username && !subject) {
+      return res.status(400).json({ msg: 'Nothing to update' });
+    }
+    if (email && !/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ msg: 'Invalid email' });
+    if (contact && !/^\+?[0-9\-\s]{7,15}$/.test(contact)) return res.status(400).json({ msg: 'Invalid contact' });
+
+    const fields = [];
+    const params = [];
+    if (name !== undefined) { fields.push('name = ?'); params.push(name); }
+    if (email !== undefined) { fields.push('email = ?'); params.push(email); }
+    if (contact !== undefined) { fields.push('contact = ?'); params.push(contact); }
+    if (username !== undefined) { fields.push('username = ?'); params.push(username); }
+    if (subject !== undefined) { fields.push('subject = ?'); params.push(subject); }
+
+    const sql = `UPDATE teachers_cse SET ${fields.join(', ')}, updated_at = NOW() WHERE id = ?`;
+    params.push(id);
+    const [result] = await pool.query(sql, params);
+    if (result.affectedRows === 0) return res.status(404).json({ msg: 'Not found' });
+    return res.json({ msg: 'Teacher updated' });
+  } catch (e) {
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
+// HOD: Update a student's basic profile fields by year table
+async function hodUpdateStudent(req, res) {
+  try {
+    const { branch, year, rollNo } = req.params;
+    const { name, email, contact, username, admission_year } = req.body;
+    if (!['SY', 'TY', 'BE'].includes(year)) {
+      return res.status(400).json({ msg: 'Invalid year' });
+    }
+    if (!name && !email && !contact && !username && admission_year === undefined) {
+      return res.status(400).json({ msg: 'Nothing to update' });
+    }
+    if (email && !/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ msg: 'Invalid email' });
+    if (contact && !/^\+?[0-9\-\s]{7,15}$/.test(contact)) return res.status(400).json({ msg: 'Invalid contact' });
+
+    const table = tableFor('students', year, branch);
+    const fields = [];
+    const params = [];
+    if (name !== undefined) { fields.push('name = ?'); params.push(name); }
+    if (email !== undefined) { fields.push('email = ?'); params.push(email); }
+    if (contact !== undefined) { fields.push('contact = ?'); params.push(contact); }
+    if (username !== undefined) { fields.push('username = ?'); params.push(username); }
+    if (admission_year !== undefined) { fields.push('admission_year = ?'); params.push(admission_year); }
+
+    const sql = `UPDATE ${table} SET ${fields.join(', ')}, updated_at = NOW() WHERE roll_no = ?`;
+    params.push(rollNo);
+    const [result] = await pool.query(sql, params);
+    if (result.affectedRows === 0) return res.status(404).json({ msg: 'Not found' });
+    return res.json({ msg: 'Student updated' });
+  } catch (e) {
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
+// HOD: Create a new teacher (password optional, default 'password')
+async function hodCreateTeacher(req, res) {
+  try {
+    const { name, email, contact, username, subject, password } = req.body;
+    if (!name || !email || !username) {
+      return res.status(400).json({ msg: 'name, email, username are required' });
+    }
+    if (!/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ msg: 'Invalid email' });
+    if (contact && !/^\+?[0-9\-\s]{7,15}$/.test(contact)) return res.status(400).json({ msg: 'Invalid contact' });
+    const hashed = await bcrypt.hash(password || 'password', 10);
+    const [result] = await pool.query(
+      'INSERT INTO teachers_cse (name, email, contact, username, password, subject) VALUES (?, ?, ?, ?, ?, ?)',
+      [name, email, contact || null, username, hashed, subject || null]
+    );
+    return res.status(201).json({ id: result.insertId, name, email, contact: contact || null, username, subject: subject || null });
+  } catch (e) {
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
+// HOD: Delete a teacher by id
+async function hodDeleteTeacher(req, res) {
+  try {
+    const { id } = req.params;
+    const [result] = await pool.query('DELETE FROM teachers_cse WHERE id = ?', [id]);
+    if (result.affectedRows === 0) return res.status(404).json({ msg: 'Not found' });
+    return res.json({ msg: 'Teacher deleted' });
+  } catch (e) {
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
+// HOD: Create a new student in specific year table (defaults branch CSE)
+async function hodCreateStudent(req, res) {
+  try {
+    const { branch, year } = req.params;
+    const { roll_no, name, email, contact, username, password, admission_year } = req.body;
+    if (!['SY', 'TY', 'BE'].includes(year)) return res.status(400).json({ msg: 'Invalid year' });
+    if (!roll_no || !name || !username) return res.status(400).json({ msg: 'roll_no, name, username are required' });
+    if (email && !/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ msg: 'Invalid email' });
+    if (contact && !/^\+?[0-9\-\s]{7,15}$/.test(contact)) return res.status(400).json({ msg: 'Invalid contact' });
+    const table = tableFor('students', year, branch);
+    const hashed = await bcrypt.hash(password || 'password', 10);
+    const [result] = await pool.query(
+      `INSERT INTO ${table} (roll_no, name, email, contact, username, password, admission_year) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [roll_no, name, email || null, contact || null, username, hashed, admission_year || null]
+    );
+    return res.status(201).json({ roll_no, name, email: email || null, contact: contact || null, username, admission_year: admission_year || null });
+  } catch (e) {
+    return res.status(500).json({ msg: 'Server error' });
+  }
+}
+
+// HOD: Delete a student by roll_no in specific year table
+async function hodDeleteStudent(req, res) {
+  try {
+    const { branch, year, rollNo } = req.params;
+    if (!['SY', 'TY', 'BE'].includes(year)) return res.status(400).json({ msg: 'Invalid year' });
+    const table = tableFor('students', year, branch);
+    const [result] = await pool.query(`DELETE FROM ${table} WHERE roll_no = ?`, [rollNo]);
+    if (result.affectedRows === 0) return res.status(404).json({ msg: 'Not found' });
+    return res.json({ msg: 'Student deleted' });
   } catch (e) {
     return res.status(500).json({ msg: 'Server error' });
   }
@@ -379,6 +519,13 @@ module.exports = {
   hodFeesDefaulters,
   hodListEvents,
   hodListNotifications,
+  hodUpdateTeacher,
+  hodUpdateStudent,
+  // HOD create/delete
+  hodCreateTeacher,
+  hodDeleteTeacher,
+  hodCreateStudent,
+  hodDeleteStudent,
   // Teacher
   teacherProfile,
   teacherClasses,

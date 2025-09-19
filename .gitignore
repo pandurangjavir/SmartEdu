@@ -1,0 +1,23 @@
+# Python
+.venv/
+venv/
+**/__pycache__/
+*.py[cod]
+*.pyd
+*.so
+*.dll
+.env
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+backend/node_modules/
+frontend/node_modules/
+
+# Logs
+*.log
+backend/logs/
+
+# Project specifics
+smartedu-chatbot/.venv/

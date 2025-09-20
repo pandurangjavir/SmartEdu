@@ -2,9 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
-  HomeIcon,
   ChatBubbleLeftRightIcon,
-  SparklesIcon,
   AcademicCapIcon,
   UserGroupIcon,
   UserIcon,
@@ -18,12 +16,6 @@ const Sidebar = () => {
   const location = useLocation();
 
   const menuItems = [
-    {
-      name: 'Dashboard',
-      href: '/dashboard',
-      icon: HomeIcon,
-      roles: ['student', 'teacher', 'admin', 'hod']
-    },
     {
       name: 'Teacher Dashboard',
       href: '/teacher',
@@ -49,12 +41,6 @@ const Sidebar = () => {
       roles: ['student', 'teacher', 'admin', 'hod', 'principal']
     },
     {
-      name: 'AI Services',
-      href: '/ai-services',
-      icon: SparklesIcon,
-      roles: ['student', 'teacher', 'admin', 'hod']
-    },
-    {
       name: 'Student Services',
       href: '/student-services',
       icon: AcademicCapIcon,
@@ -78,10 +64,10 @@ const Sidebar = () => {
     item.roles.includes(user?.role)
   );
 
-  // Principal-specific sidebar: only Dashboard, AI Chatbot, Profile
+  // Principal-specific sidebar: only Principal Dashboard, AI Chatbot, Profile
   if (user?.role === 'principal') {
     filteredMenuItems = [
-      { name: 'Dashboard', href: '/principal', icon: HomeIcon },
+      { name: 'Principal Dashboard', href: '/principal', icon: BriefcaseIcon },
       { name: 'AI Chatbot', href: '/chatbot', icon: ChatBubbleLeftRightIcon },
       { name: 'Profile', href: '/profile', icon: UserIcon }
     ];

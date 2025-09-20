@@ -5,6 +5,7 @@ intents:
   - goodbye
   - help
   - get_announcements
+  - principal_get_announcements
   - get_events
   - get_fees
   - get_marks
@@ -12,11 +13,18 @@ intents:
   - get_students
   - get_teachers
   - update_from_pdf
+  - principal_get_hods
+  - principal_make_announcement
 
 slots:
   role:
     type: text
     influence_conversation: true
+    mappings:
+      - type: custom
+  token:
+    type: text
+    influence_conversation: false
     mappings:
       - type: custom
   branch:
@@ -58,3 +66,7 @@ actions:
   - action_get_teachers
   - action_update_from_pdf
   - action_session_start
+  - action_principal_get_hods
+  - action_principal_get_announcements
+  - action_principal_create_announcement
+  - action_restrict_principal

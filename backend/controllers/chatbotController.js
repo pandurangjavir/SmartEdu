@@ -688,7 +688,7 @@ async function sendMessage(req, res) {
 
 
 		// Otherwise, forward to Rasa with rich user context (auto slot-filling)
-		const rasaResponse = await axios.post('http://127.0.0.1:5005/webhooks/rest/webhook', {
+        const rasaResponse = await axios.post('http://127.0.0.1:5005/webhooks/rest/webhook', {
 			sender: `user_${id}`,
 			message: message,
 			metadata: {
@@ -698,7 +698,8 @@ async function sendMessage(req, res) {
 				year: req.user.year,
 				roll_no: req.user.roll_no,
 				username: req.user.username,
-				table
+                table,
+                token: (req.headers && (req.headers.authorization || req.headers.Authorization)) || null
 			}
 		});
 

@@ -4,6 +4,9 @@ nlu:
     - hi
     - hello
     - hey bot
+    - hey
+    - good morning
+    - good evening
 - intent: goodbye
   examples: |
     - bye
@@ -19,6 +22,29 @@ nlu:
     - show announcements
     - any notices today?
     - department announcements
+    - list announcements
+    - what are the latest announcements
+
+- intent: principal_get_hods
+  examples: |
+    - list HODs
+    - show HODs
+    - show all HODs
+    - who are the HODs
+
+- intent: principal_get_announcements
+  examples: |
+    - show announcements
+    - list announcements
+    - what are the latest announcements
+
+- intent: principal_make_announcement
+  examples: |
+    - make announcement Tomorrow is holiday
+    - announce Exam postponed to Monday
+    - create announcement Meeting at 3 PM
+    - make an announcement Library closed today
+    - post announcement Results out on portal
 - intent: get_events
   examples: |
     - upcoming events

@@ -17,6 +17,28 @@ rules:
   - intent: help
   - action: utter_help
 
+- rule: principal list hods
+  steps:
+  - intent: principal_get_hods
+  - action: action_principal_get_hods
+
+- rule: principal list announcements
+  steps:
+  - intent: principal_get_announcements
+  - action: action_principal_get_announcements
+
+- rule: principal make announcement
+  steps:
+  - intent: principal_make_announcement
+  - action: action_principal_create_announcement
+
+- rule: restrict principal other intents
+  condition:
+  - slot_was_set:
+    - role: principal
+  steps:
+  - action: action_restrict_principal
+
 - rule: marks
   steps:
   - intent: get_marks

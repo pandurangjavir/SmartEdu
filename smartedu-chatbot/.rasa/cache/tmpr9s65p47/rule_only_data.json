@@ -1,0 +1,6 @@
+{
+  "rule_only_slots": [
+    "role"
+  ],
+  "rule_only_loops": []
+}

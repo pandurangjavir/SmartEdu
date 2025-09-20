@@ -5,6 +5,21 @@ import requests
 
 BASE_URL = "http://localhost:5000/api"
 
+
+def _extract_auth_and_role(tracker: Tracker):
+    """Get role and Authorization header value from slots or latest metadata."""
+    role = tracker.get_slot("role")
+    token = tracker.get_slot("token")
+    metadata = tracker.latest_message.get("metadata") if tracker.latest_message else None
+    if (not role or not token) and isinstance(metadata, dict):
+        role = role or metadata.get("role") or metadata.get("user_role")
+        token = token or metadata.get("token")
+    headers = {}
+    if token:
+        # If token already includes 'Bearer', use as-is; else prefix
+        headers["Authorization"] = token if isinstance(token, str) and token.lower().startswith("bearer ") else f"Bearer {token}"
+    return role, headers
+
 class ActionGetAnnouncements(Action):
     def name(self): return "action_get_announcements"
     def run(self, dispatcher, tracker, domain):
@@ -54,6 +69,7 @@ class ActionSessionStart(Action):
         year = None
         roll_no = None
         username = None
+        token = None
 
         if isinstance(message_metadata, dict):
             role = message_metadata.get("role") or message_metadata.get("user_role")
@@ -61,6 +77,7 @@ class ActionSessionStart(Action):
             year = message_metadata.get("year")
             roll_no = message_metadata.get("roll_no")
             username = message_metadata.get("username")
+            token = message_metadata.get("token")
 
         slot_events: List[Dict[Text, Any]] = []
         if role:
@@ -73,10 +90,128 @@ class ActionSessionStart(Action):
             slot_events.append(SlotSet("roll_no", roll_no))
         if username:
             slot_events.append(SlotSet("username", username))
+        if token:
+            slot_events.append(SlotSet("token", token))
 
         events.extend(slot_events)
         events.append(ActionExecuted("action_listen"))
         return events
+
+
+class ActionPrincipalGetHODs(Action):
+    def name(self) -> Text:
+        return "action_principal_get_hods"
+
+    def run(self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        role, headers = _extract_auth_and_role(tracker)
+        if role != "principal":
+            dispatcher.utter_message(text="This information is only available to the principal.")
+            return []
+        try:
+            res = requests.get(f"{BASE_URL}/principal/hods", headers=headers, timeout=10)
+            data = res.json()
+            rows = data.get("rows") if isinstance(data, dict) else data
+            if not rows:
+                dispatcher.utter_message(text="No HODs found.")
+            else:
+                lines = []
+                for h in rows:
+                    name = h.get("name") or h.get("username") or f"HOD #{h.get('id')}"
+                    email = h.get("email") or "N/A"
+                    contact = h.get("contact") or "N/A"
+                    branch = h.get("branch") or h.get("department") or ""
+                    suffix = f" | {branch}" if branch else ""
+                    lines.append(f"- {name}{suffix} | email: {email} | contact: {contact}")
+                dispatcher.utter_message(text="HOD details:\n" + "\n".join(lines))
+        except Exception:
+            dispatcher.utter_message(text="Unable to fetch HODs right now.")
+        return []
+
+
+class ActionPrincipalGetAnnouncements(Action):
+    def name(self) -> Text:
+        return "action_principal_get_announcements"
+
+    def run(self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        role, headers = _extract_auth_and_role(tracker)
+        if role != "principal":
+            dispatcher.utter_message(text="This information is only available to the principal.")
+            return []
+        try:
+            res = requests.get(f"{BASE_URL}/principal/announcements", headers=headers, timeout=10)
+            data = res.json()
+            rows = data.get("rows") if isinstance(data, dict) else data
+            if not rows:
+                dispatcher.utter_message(text="No announcements found.")
+            else:
+                lines = []
+                for a in rows[:10]:
+                    title = a.get("title") or "Announcement"
+                    msg = a.get("message") or a.get("body") or ""
+                    audience = a.get("target_audience") or a.get("audience") or "all"
+                    created_at = a.get("created_at") or a.get("createdAt") or ""
+                    meta = f" (to: {audience})" if audience else ""
+                    date = f" [{created_at}]" if created_at else ""
+                    lines.append(f"- {title}{meta}{date}: {msg}")
+                dispatcher.utter_message(text="Recent announcements:\n" + "\n".join(lines))
+        except Exception:
+            dispatcher.utter_message(text="Unable to fetch announcements right now.")
+        return []
+
+
+class ActionPrincipalCreateAnnouncement(Action):
+    def name(self) -> Text:
+        return "action_principal_create_announcement"
+
+    def run(self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        role, headers = _extract_auth_and_role(tracker)
+        if role != "principal":
+            dispatcher.utter_message(text="Only the principal can make announcements.")
+            return []
+
+        user_text = (tracker.latest_message or {}).get("text") or ""
+        # naive parse: everything after keywords becomes the message
+        lowered = user_text.lower()
+        message = user_text
+        for kw in ["make announcement", "announce", "create announcement", "make an announcement", "post announcement"]:
+            idx = lowered.find(kw)
+            if idx >= 0:
+                message = user_text[idx + len(kw):].strip(" :-,\u2013\u2014") or user_text
+                break
+
+        if not message:
+            dispatcher.utter_message(text="Please provide the announcement content.")
+            return []
+
+        payload = {
+            "title": message[:60] if len(message) > 60 else (message or "Announcement"),
+            "message": message,
+            "target_audience": "all"
+        }
+        try:
+            req_headers = dict(headers)
+            req_headers["Content-Type"] = "application/json"
+            res = requests.post(f"{BASE_URL}/principal/announcements", json=payload, headers=req_headers, timeout=10)
+            if res.status_code in (200, 201):
+                dispatcher.utter_message(text="Announcement created successfully.")
+            else:
+                dispatcher.utter_message(text="Failed to create announcement.")
+        except Exception:
+            dispatcher.utter_message(text="Could not reach the announcement service.")
+        return []
+
+
+class ActionRestrictPrincipal(Action):
+    def name(self) -> Text:
+        return "action_restrict_principal"
+
+    def run(self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        role = tracker.get_slot("role")
+        if role == "principal":
+            dispatcher.utter_message(text="I can help with HOD info and announcements only. Say 'list HODs', 'show announcements', or 'make announcement ...'.")
+        else:
+            dispatcher.utter_message(text="Sorry, I didn't understand that.")
+        return []
 
 class ActionGetFees(Action):
     def name(self): return "action_get_fees"

@@ -172,6 +172,7 @@ class HybridNLPEngine:
     def build_system_prompt(self, role, name, student_db_context=None, chat_history=None, user_context=None):
         """Build a role-specific system prompt for Gemini."""
         base = f"""You are SmartEdu AI, the official intelligent virtual assistant for SKN Sinhgad College of Engineering (SKNSCOE), Korti, Pandharpur.
+**Note: SKN stands for Smt. Kashibai Navale.**
 You were developed as a B.Tech final year project by: Miss. Yelpale Pratiksha, Miss. Waghamare Laxmi, Mr. Javir Pandurang, and Mr. Kakade Dhiraj under guidance of Prof. R. S. Yevale.
 
 RULES:

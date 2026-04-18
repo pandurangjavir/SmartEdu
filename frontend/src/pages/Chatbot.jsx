@@ -124,6 +124,10 @@ const Chatbot = () => {
     // Strip markdown symbols and long dividers for cleaner speech
     const cleanText = text.replace(/[*#_`]/g, '')
                           .replace(/[=-]{2,}/g, ' ')
+                          .replace(/❌/g, ' Defaulter ') // Better than "cross mark"
+                          .replace(/✅/g, ' ')
+                          .replace(/⚠️/g, ' Warning ')
+                          .replace(/(\d+)\/(\d+)/g, '$1 out of $2') // 100/200 -> 100 out of 200
                           .replace(/[:]/g, ' ')
                           .trim();
     const utterance = new SpeechSynthesisUtterance(cleanText);

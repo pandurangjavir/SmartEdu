@@ -21,6 +21,8 @@ const Chatbot = () => {
   const [alerts, setAlerts] = useState([]);
   const [isVoiceMode, setIsVoiceMode] = useState(false);
   const isVoiceModeRef = useRef(false);
+  const [pendingVoiceExit, setPendingVoiceExit] = useState(false);
+  const pendingVoiceExitRef = useRef(false);
   const recognitionRef = useRef(null);
   const messagesEndRef = useRef(null);
 
@@ -138,7 +140,15 @@ const Chatbot = () => {
     utterance.onstart = () => setIsPlaying(true);
     utterance.onend = () => {
       setIsPlaying(false);
-      if (isVoiceModeRef.current) {
+      if (pendingVoiceExitRef.current) {
+        // Mode switch happens AFTER speaking is done
+        setIsVoiceMode(false);
+        isVoiceModeRef.current = false;
+        setPendingVoiceExit(false);
+        pendingVoiceExitRef.current = false;
+        stopListening();
+        toast('⌨️ Switched to Typing Mode');
+      } else if (isVoiceModeRef.current) {
         // Automatically start listening for the next turn
         setTimeout(() => startListening(true), 500);
       }
@@ -162,15 +172,6 @@ const Chatbot = () => {
     setInputMessage('');
     setLoading(true);
 
-    // Check for exit keywords to disable Voice Mode automatically
-    const lowerMsg = messageContent.toLowerCase();
-    const exitKeywords = ['bye', 'goodbye', 'exit voice mode', 'switch to type mode', 'stop speaking'];
-    if (exitKeywords.some(k => lowerMsg.includes(k))) {
-      setIsVoiceMode(false);
-      isVoiceModeRef.current = false;
-      stopListening();
-    }
-
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post('/chatbot', {
@@ -179,6 +180,16 @@ const Chatbot = () => {
       }, { headers: token ? { Authorization: `Bearer ${token}` } : {} });
 
       const aiText = response.data.response;
+      
+      // Check for exit keywords OR intent to disable Voice Mode automatically
+      const lowerMsg = messageContent.toLowerCase();
+      const isExit = ['bye', 'goodbye', 'exit voice mode', 'switch to type mode', 'stop speaking'].some(k => lowerMsg.includes(k)) || response.data.intent === 'goodbye';
+      
+      if (isExit && isVoiceModeRef.current) {
+        setPendingVoiceExit(true);
+        pendingVoiceExitRef.current = true;
+      }
+
       const aiMessage = {
         id: Date.now() + 1,
         content: aiText,

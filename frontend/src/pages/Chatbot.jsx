@@ -162,6 +162,14 @@ const Chatbot = () => {
     if (!overrideMessage) setInputMessage('');
     setLoading(true);
 
+    // Check for exit keywords to disable Voice Mode automatically
+    const lowerMsg = messageContent.toLowerCase();
+    const exitKeywords = ['bye', 'goodbye', 'exit voice mode', 'switch to type mode', 'stop speaking'];
+    if (exitKeywords.some(k => lowerMsg.includes(k))) {
+      setIsVoiceMode(false);
+      isVoiceModeRef.current = false;
+    }
+
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post('/chatbot', {

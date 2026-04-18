@@ -159,7 +159,7 @@ const Chatbot = () => {
     };
     setMessages(prev => [...prev, userMessage]);
     const messageToSend = messageContent;
-    if (!overrideMessage) setInputMessage('');
+    setInputMessage('');
     setLoading(true);
 
     // Check for exit keywords to disable Voice Mode automatically
@@ -168,6 +168,7 @@ const Chatbot = () => {
     if (exitKeywords.some(k => lowerMsg.includes(k))) {
       setIsVoiceMode(false);
       isVoiceModeRef.current = false;
+      stopListening();
     }
 
     try {

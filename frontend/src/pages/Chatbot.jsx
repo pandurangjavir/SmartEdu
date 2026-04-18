@@ -121,7 +121,12 @@ const Chatbot = () => {
       return;
     }
     window.speechSynthesis.cancel(); // stop any previous speech
-    const utterance = new SpeechSynthesisUtterance(text.replace(/[*#_`]/g, '')); // strip markdown
+    // Strip markdown symbols and long dividers for cleaner speech
+    const cleanText = text.replace(/[*#_`]/g, '')
+                          .replace(/[=-]{2,}/g, ' ')
+                          .replace(/[:]/g, ' ')
+                          .trim();
+    const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = 'en-IN';
     utterance.rate = 1.0;
     utterance.pitch = 1;

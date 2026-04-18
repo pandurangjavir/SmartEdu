@@ -121,13 +121,14 @@ const Chatbot = () => {
       return;
     }
     window.speechSynthesis.cancel(); // stop any previous speech
-    // Strip markdown symbols and long dividers for cleaner speech
+    // Strip markdown symbols, emojis, and long dividers for cleaner speech
     const cleanText = text.replace(/[*#_`]/g, '')
                           .replace(/[=-]{2,}/g, ' ')
-                          .replace(/❌/g, ' Defaulter ') // Better than "cross mark"
+                          .replace(/[📌🎯📅🔖📊📈💰🏫🎓🎭🏛️🎨⚽📚🔧🎓💻🔧🏛️🎨⚽📚]/gu, '') // Strip emojis
+                          .replace(/❌/g, ' Defaulter ')
                           .replace(/✅/g, ' ')
                           .replace(/⚠️/g, ' Warning ')
-                          .replace(/(\d+)\/(\d+)/g, '$1 out of $2') // 100/200 -> 100 out of 200
+                          .replace(/(\d+)\/(\d+)/g, '$1 out of $2')
                           .replace(/[:]/g, ' ')
                           .trim();
     const utterance = new SpeechSynthesisUtterance(cleanText);

@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* IIT-style Color Scheme - Professional Navy Blue & Gold */
+  --iit-primary: #1a237e;
+  --iit-primary-dark: #0d47a1;
+  --iit-primary-light: #283593;
+  --iit-accent: #ffa000;
+  --iit-accent-light: #ffc107;
+  --iit-success: #2e7d32;
+  --iit-warning: #f57c00;
+  --iit-error: #c62828;
+  --iit-text-primary: #212121;
+  --iit-text-secondary: #757575;
+  --iit-bg-light: #f5f7fa;
+  --iit-border: #e0e0e0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--iit-bg-light);
+  color: var(--iit-text-primary);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+} 
+
+/* Fade-in-up animation */
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 500ms ease-out both;
+}
+
+/* Slight scale on hover (utility) */
+.hover\:scale-subtle:hover {
+  transform: scale(1.02);
+}
+
+/* Transition utility for smoother UI */
+.transition-base {
+  transition: all 200ms ease;
+}
+
+/* IIT Professional Styles */
+.iit-gradient {
+  background: linear-gradient(135deg, var(--iit-primary) 0%, var(--iit-primary-dark) 100%);
+}
+
+.iit-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--iit-border);
+  transition: all 0.3s ease;
+}
+
+.iit-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.iit-btn-primary {
+  background: linear-gradient(135deg, var(--iit-primary) 0%, var(--iit-primary-dark) 100%);
+  color: white;
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.iit-btn-primary:hover {
+  background: linear-gradient(135deg, var(--iit-primary-dark) 0%, var(--iit-primary-light) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 35, 126, 0.3);
+}
+
+.iit-btn-accent {
+  background: var(--iit-accent);
+  color: white;
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.iit-btn-accent:hover {
+  background: var(--iit-accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 160, 0, 0.3);
+}
+
+.iit-header {
+  background: linear-gradient(135deg, var(--iit-primary) 0%, var(--iit-primary-dark) 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Professional Typography */
+.text-iit-primary {
+  color: var(--iit-primary);
+}
+
+.text-iit-accent {
+  color: var(--iit-accent);
+}
+
+.bg-iit-primary {
+  background-color: var(--iit-primary);
+}
+
+.bg-iit-accent {
+  background-color: var(--iit-accent);
+}
+
+/* Glassmorphism effect for modern UI */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+} 

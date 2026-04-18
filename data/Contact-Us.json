@@ -1,0 +1,69 @@
+{
+  "page": "Contact US",
+  "address": {
+    "full_address": "Gat No. 664, SKN Sinhgad college of Engineering, A/P Korti, Pandharpur Dist- Solapur (413304)",
+    "email": "principal@sknscoe.ac.in"
+  },
+  "department_contacts": [
+    {
+      "department": "Principal Office",
+      "phone_number": "+91 8275206048"
+    },
+    {
+      "department": "Vice-Principal Office",
+      "phone_number": "+91 7875212835"
+    },
+    {
+      "department": "Training & Placement Office",
+      "phone_number": "+91 8308614875"
+    },
+    {
+      "department": "Admin Office",
+      "phone_number": "+91 8275206048"
+    },
+    {
+      "department": "Examination Office",
+      "phone_number": "+91 9967798081"
+    },
+    {
+      "department": "Account section",
+      "phone_number": "+91 9423536913"
+    },
+    {
+      "department": "LC & TC & Scholarship",
+      "phone_number": "+91 7588216327"
+    },
+    {
+      "department": "Computer Science & Engineering",
+      "phone_number": "+91 9975560358"
+    },
+    {
+      "department": "First Year Engineering",
+      "phone_number": "+91 9423741150"
+    },
+    {
+      "department": "Mechanical Engineering",
+      "phone_number": "+91 9850889115"
+    },
+    {
+      "department": "Electronics &Tele. Communication",
+      "phone_number": "+91 8806806756"
+    },
+    {
+      "department": "Civil Engineering",
+      "phone_number": "+91 8600502360"
+    },
+    {
+      "department": "Electrical Engineering",
+      "phone_number": "+91 9975463746"
+    },
+    {
+      "department": "Library",
+      "phone_number": "+91 9850888223"
+    }
+  ],
+  "timings": {
+    "monday_to_friday": "09:00 AM - 5:00 PM",
+    "saturday_sunday": "closed"
+  }
+}

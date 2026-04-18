@@ -1,0 +1,238 @@
+{
+  "academic_year": "2025-26",
+  "general_info": {
+    "college": "Savitribai Phule Shikshan Prasark Mandal’s, ‘SKN Sinhgad college of Engineering’",
+    "approval": "Approved by AICTE and affiliated to Solapur University, Solapur.",
+    "rule_followed": "Follows rules and regulations laid down by ‘Director of Technical Education’ Maharashtra State.",
+    "programs_offered": "6 Undergraduate programs and 4 post graduate programs."
+  },
+  "ug_courses": [
+    {
+      "course_name": "MECHANICAL ENGINEERING",
+      "choice_code": "664361210",
+      "tfws_choice_code": "664361211T",
+      "intake": 120
+    },
+    {
+      "course_name": "ELECTRONICS AND TELECOMMUNICATION ENGINEERING",
+      "choice_code": "664337210",
+      "tfws_choice_code": "664337211T",
+      "intake": 60
+    },
+    {
+      "course_name": "COMPUTER SCIENCE AND ENGINEERING",
+      "choice_code": "664324210",
+      "tfws_choice_code": "664324211T",
+      "intake": 120
+    },
+    {
+      "course_name": "CIVIL ENGINEERING",
+      "choice_code": "664319110",
+      "tfws_choice_code": "664319111T",
+      "intake": 60
+    },
+    {
+      "course_name": "ELECTRICAL ENGINEERING",
+      "choice_code": "664329310",
+      "tfws_choice_code": "664329311T",
+      "intake": 60
+    },
+    {
+      "course_name": "ARTIFICIAL INTELLIGENCE (AI) and DATA SCIENCE",
+      "choice_code": "664326310",
+      "tfws_choice_code": "664326311T",
+      "intake": 60
+    }
+  ],
+  "pg_courses": [
+    {
+      "course_name": "M.Tech. (DESIGN ENGINEERING)",
+      "course_code": "664360110",
+      "intake": 18
+    },
+    {
+      "course_name": "M.Tech. (ELECTRONICS ENGINEERING)",
+      "course_code": "664337610",
+      "intake": 18
+    },
+    {
+      "course_name": "M.Tech. (COMPUTER SCIENCE AND ENGINEERING)",
+      "course_code": "664324210",
+      "intake": 18
+    },
+    {
+      "course_name": "M.Tech.(STRUCTURAL ENGINEERING)",
+      "course_code": "664321210",
+      "intake": 18
+    }
+  ],
+  "eligibility": {
+    "first_year_ug": {
+      "maharashtra_state": [
+        "Citizen of India.",
+        "Passed 10+2 with Physics and Mathematics as compulsory subjects along with Chemistry/Biotechnology/Biology/Technical Vocational subject/Computer Science/IT/Informatics Practices/Agriculture/Engineering Graphics/Business Studies/Electronics/Entrepreneurship.",
+        "Obtained at least 45% marks (40% for Reserved categories, EWS, PwD belonging to Maharashtra State) in the above subjects taken together.",
+        "Appeared in all subjects in PCM MHT-CET 2025 and obtained non-zero score in PCM MHT-CET 2025."
+      ],
+      "all_india_and_maharashtra": [
+        "Citizen of India.",
+        "Passed 10+2 with Physics and Mathematics as compulsory subjects along with Chemistry/Biotechnology/Biology/Technical Vocational subject/Computer Science/IT/Informatics Practices/Agriculture/Engineering Graphics/Business Studies/Electronics/Entrepreneurship.",
+        "Obtained at least 45% marks (40% for Reserved categories, EWS, PwD belonging to Maharashtra State).",
+        "Obtained non-zero positive score in JEE (Main) OR appeared in all subjects in PCM MHT-CET 2025 and obtained non-zero score. Preference given to JEE candidates.",
+        "OR Passed minimum three years Diploma in Engineering and Technology with at least 45% marks (40% for reserved categories).",
+        "OR Passed three years D.Voc. stream in the same or allied sector."
+      ]
+    },
+    "lateral_entry_dse": {
+      "maharashtra_and_all_india": [
+        "Citizen of India.",
+        "Passed minimum three years or two years (Lateral Entry) Diploma Course in Engineering and Technology with at least 45% marks (40% for Reserved categories, EWS, PwD belonging to Maharashtra State) from an AICTE or Govt. approved institution.",
+        "OR Passed B.Sc. Degree from a UGC recognized University with at least 45% marks (40% for reserved categories) and passed HSC with Mathematics.",
+        "OR Passed three years D.Voc. Stream in the same or allied sector."
+      ]
+    },
+    "post_graduate": {
+      "maharashtra_and_all_india": [
+        "Citizen of India.",
+        "Passed Bachelor Degree in the relevant field of Engineering and Technology or Pharmacy from AICTE or Govt. approved institutions, with at least 50% marks (45% for Reserved categories, EWS, PwD belonging to Maharashtra State).",
+        "Obtained Qualified score in GATE/GPAT OR non-Qualified marks in GATE/GPAT for the current academic year.",
+        "OR For sponsored candidates, minimum of two years of full time work experience in the relevant field.",
+        "OR Minimum of two years of full time work experience in the relevant field (eligible for institute level only).",
+        "GATE/GPAT Qualified candidates have preference."
+      ]
+    }
+  },
+  "fee_structure": {
+    "cap_seats_2025_26": {
+      "first_year_btech": [
+        {
+          "category": "OPEN (NON-EBC)",
+          "tuition_fees": 83478.0,
+          "development_fees": 12522.0,
+          "total_fees": 96000.0
+        },
+        {
+          "category": "OBC/EBC/SEBC",
+          "tuition_fees": 41739.0,
+          "development_fees": 12522.0,
+          "total_fees": 54261.0
+        },
+        {
+          "category": "NT/SBC/TFWS/Girls",
+          "tuition_fees": 0.0,
+          "development_fees": 12522.0,
+          "total_fees": 12522.0
+        },
+        {
+          "category": "SC/ST",
+          "tuition_fees": 0.0,
+          "development_fees": 0.0,
+          "total_fees": 0.0
+        }
+      ],
+      "first_year_btech_alternate": [
+        {
+          "category": "OPEN (NON-EBC)",
+          "tuition_fees": 83478.0,
+          "development_fees": 12522.0,
+          "total_fees": 96000.0
+        },
+        {
+          "category": "OBC/EBC/SEBC",
+          "tuition_fees": 41439.0,
+          "development_fees": 12522.0,
+          "total_fees": 54261.0
+        },
+        {
+          "category": "NT/SBC/Girls",
+          "tuition_fees": 0.0,
+          "development_fees": 12522.0,
+          "total_fees": 12522.0
+        },
+        {
+          "category": "SC/ST",
+          "tuition_fees": 0.0,
+          "development_fees": 0.0,
+          "total_fees": 0.0
+        }
+      ],
+      "mtech": [
+        {
+          "category": "Open/OBC/NT/SBC/EBC/SEBC",
+          "tuition_fees": 59316.0,
+          "development_fees": 8897.0,
+          "total_fees": 68213.0
+        },
+        {
+          "category": "SC/ST (Income above 2.5 Lakh)",
+          "tuition_fees": 59316.0,
+          "development_fees": 8897.0,
+          "total_fees": 68213.0
+        },
+        {
+          "category": "SC/ST (Income below 2.5 Lakh)",
+          "tuition_fees": 0.0,
+          "development_fees": 0.0,
+          "total_fees": 0.0
+        }
+      ],
+      "caution_deposit_ug": 2000.0,
+      "caution_deposit_pg": 3000.0,
+      "hostel_and_mess_fees": {
+        "hostel_mess_fee": 42000.0,
+        "caution_money_deposit": 3000.0,
+        "hostel_admission_form_prospectus": 708.0,
+        "total": 45708.0
+      }
+    },
+    "institute_level_seats_2025_26": {
+      "first_year_btech": {
+        "tuition_fees": 250434.0,
+        "development_fees": 37566.0,
+        "total_fees": 288000.0,
+        "deposit": "CAUTION MONEY DEPOSIT Rs. 2,000 Refundable"
+      },
+      "mtech": {
+        "tuition_fees": 177948.0,
+        "development_fees": 26691.0,
+        "total_fees": 204639.0,
+        "deposit": "CAUTION MONEY DEPOSIT Rs. 3,000 Refundable"
+      },
+      "hostel_and_mess_fees": {
+        "hostel_mess_fee": 42000.0,
+        "caution_money_deposit": 3000.0,
+        "hostel_admission_form_prospectus": 708.0,
+        "total": 45708.0
+      }
+    }
+  },
+  "scholarship_schemes": [
+    {
+      "department": "Directorate of Technical Education",
+      "schemes": [
+        "Dr. Punjabrao Deshmukh Vastigruh Nirvah Bhatta Yojna (DTE)",
+        "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Yojna (EBC)",
+        "Scholarship for students of minority communities pursuing Higher and Professional courses (DTE)"
+      ]
+    },
+    {
+      "department": "OBC, SEBC, VJNT & SBC Welfare Department",
+      "schemes": [
+        "Post Matric Scholarship to OBC Students",
+        "Post Matric Scholarship to SBC Students",
+        "Post Matric Scholarship to VJNT Students",
+        "Tuition Fees and Examination Fees to OBC Students",
+        "Tuition Fees and Examination Fees to SBC Students",
+        "Tuition Fees and Examination Fees to VJNT Students"
+      ]
+    },
+    {
+      "department": "Social Justice and Special Assistance Department",
+      "schemes": [
+        "Government of India Post-Matric Scholarship",
+        "Post-Matric Tuition Fee and Examination Fee (Freeship)"
+      ]
+    }
+  ],
+  "note": "All rules regarding fees declared by the Government of Maharashtra – Fees Regulating Authority will apply. For Reserved category students, government rules will be followed subject to submission of required documents. All scholarships as per rules and regulations of DTE, Maharashtra."
+}

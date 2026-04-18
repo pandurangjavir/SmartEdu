@@ -1,0 +1,17 @@
+{
+  "page": "Research & Development",
+  "description": "This page serves as an index for research-related activities and facilities at the institute.",
+  "sections": {
+    "research_and_development": {
+      "title": "Research & Development",
+      "link": "https://www.sknscoe.ac.in/Research.php",
+      "note": "This section likely contains information about research projects, publications, and facilities."
+    },
+    "aicte_idealab": {
+      "title": "AICTE-Idea Lab",
+      "link": "https://www.sknscoe.ac.in/aicte-idealab.php",
+      "note": "This section provides details about the AICTE-funded Idea Lab, a platform for innovation and prototyping."
+    }
+  },
+  "note": "For specific details on research publications, ongoing projects, and patents, please refer to the individual department pages or the main R&D page."
+}

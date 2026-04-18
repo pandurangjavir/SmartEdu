@@ -1,0 +1,1299 @@
+{
+  "college_name": "SKN SINHGAD COLLEGE OF ENGINEERING (SKNSCOE)",
+  "location": {
+    "address": "A/p - Korti, Tal. Pandharpur, Dist. Solapur, Pin - 413304",
+    "phone": "02186-250146",
+    "email": "principal@sknscoe.ac.in",
+    "website": "https://www.sknscoe.ac.in"
+  },
+  "about": {
+    "establishment_date": "June 2010",
+    "campus_size": "20 acres",
+    "campus_type": "Fully residential with excellent infrastructure and facilities including hostel, computer centre, mess, canteen, dispensary, ATM, gymnasium.",
+    "approvals_and_affiliations": [
+      "Approved by All India Council for Technical Education (AICTE), New Delhi",
+      "Recognized by DTE (MS)",
+      "UGC Section 2(f) & 12(B)",
+      "Affiliated to Punyashlok Ahilyadevi Halkar Solapur University, Solapur"
+    ],
+    "accreditations": [
+      "NAAC Accredited with ‘A+’ Grade",
+      "3 UG Programmes (Civil Engineering, Electronics & Telecommunication Engineering & Mechanical Engineering) accredited by NBA"
+    ],
+    "vision": "To be a globally recognized technical education Institute through professional excellence, research and value based learning.",
+    "mission": [
+      "M1: To provide quality technical education that empowers students with the knowledge and skills to excel in their careers.",
+      "M2: To foster continuous learning, leadership, and professional growth to develop competent industry-ready professionals.",
+      "M3: To promote innovation and research to address real-world challenges and contribute to technological advancements.",
+      "M4: To inculcate ethical values, social responsibility, and lifelong learning for holistic personal and professional development."
+    ],
+    "quality_policy": "Quality Policy of the institute aims to provide foremost infrastructure, equipment and competent faculty to shape overall development of the students in terms of their technical excellence and personality traits meeting ever changing expectations of the stakeholders.",
+    "program_outcomes": [
+      "Engineering knowledge: Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization to the solution of complex engineering problems.",
+      "Problem analysis: Identify, formulate, review research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+      "Design/development of solutions: Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for the public health and safety, and the cultural, societal, and environmental considerations.",
+      "Conduct investigations of complex problems: Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+      "Modern tool usage: Create, select, and apply appropriate techniques, resources, and modern engineering and IT tools including prediction and modeling to complex engineering activities with an understanding of the limitations.",
+      "The engineer and society: Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+      "Environment and sustainability: Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+      "Ethics: Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+      "Individual and team work: Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+      "Communication: Communicate effectively on complex engineering activities with the engineering community and with society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+      "Project management and finance: Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+      "Life-long learning: Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+    ]
+  },
+  "leadership": {
+    "president": {
+      "name": "Prof. M. N. Navale",
+      "message_link": "https://www.sknscoe.ac.in/presidents-message.php"
+    },
+    "general_secretary": {
+      "name": "Mr. Rohit M. Navale"
+    },
+    "principal": {
+      "name": "Dr. Kailash J. Karande",
+      "title": "M.Tech, Ph.D (E&TC)",
+      "message": "Dear Students, I welcome you all to SKN Sinhgad College of Engineering... We ensure the overall development of students through a well-defined teaching-learning process and skill-based activities. I expect active support from the student and parent community to make SKNSCOE a center of excellence in Engineering Education. Wish you a bright future & success.",
+      "contact": "principal@sknscoe.ac.in"
+    }
+  },
+  "academics": {
+    "programs_offered": {
+      "b_tech": [
+        "Civil Engineering",
+        "Computer Science & Engineering",
+        "Electrical Engineering",
+        "Electronics & Telecommunication Engineering",
+        "Mechanical Engineering",
+        "First Year B. Tech."
+      ],
+      "m_tech": "Four M. Tech. degree courses",
+      "ph_d": "Three Ph. D. degree courses in Engineering and Technology",
+      "pmkvy": "Five various courses under PMKVY"
+    },
+    "departments": {
+      "first_year_fe": {
+        "name": "First Year B. Tech. (NEP-2020 w.e.f. 2023-24)",
+        "contact_email": "fy@sknscoe.ac.in",
+        "course_outcomes": [
+          {
+            "subject_code": "BSC-01",
+            "subject_name": "ENGINEERING PHYSICS",
+            "outcomes": [
+              "Understand the concepts of semiconductors to implement in Engineering field.",
+              "Analyze the structural properties of elemental solids.",
+              "Apply concepts of acoustics and ultrasonic in various Engineering instruments.",
+              "Implement diffraction and polarization phenomenon to design advanced optical instruments.",
+              "Understand the fundamentals, construction and working of Laser in order to apply this Technology in Engineering fields.",
+              "Understand the basics of optical fiber and Nanoscience to implement in Engineering."
+            ]
+          },
+          {
+            "subject_code": "BSC-02",
+            "subject_name": "ENGINEERING CHEMISTRY",
+            "outcomes": [
+              "Analyse the water quality and interpret techniques for water purification.",
+              "Describe lubrication and properties of lubricants, select proper lubricant for specific machine.",
+              "Explain mechanism of the corrosion, select proper preventive methods of corrosion.",
+              "Recognize the fuel quality and understand the scope of alternate energy sources.",
+              "Interpret the chemical synthesis, properties of various polymers and their applications.",
+              "Describe various types of energy storage systems with their applications."
+            ]
+          },
+          {
+            "subject_code": "BSC-03",
+            "subject_name": "ENGINEERING MATHEMATICS-I",
+            "outcomes": [
+              "Compute higher order derivative of standard functions.",
+              "Determine the power series expansion of a given function and evaluate limits.",
+              "Use matrices techniques for solving system simultaneous linear equations, eigen values and eigen vectors of the matrix.",
+              "Solve multivariable derivative of given functions.",
+              "Use multivariable derivative to estimate maxima and minima of multivariable function.",
+              "Compute velocity vector, gradient, divergence, curl and applications."
+            ]
+          },
+          {
+            "subject_code": "ESC-01",
+            "subject_name": "BASICS OF CIVIL AND MECHANICAL ENGINEERING",
+            "outcomes": [
+              "Describe the role of civil engineer in the development of the society and Relationship of civil engineering with other branches of engineering and technology.",
+              "Explain various elements of buildings, concepts of Green Buildings, transportation engineering, Remote sensing Techniques, GIS &GPS.",
+              "Explain various concepts and application of GIS ,GPS and Remote sensing Techniques.",
+              "Determine heat and work quantum during different thermodynamic processes and Identify power absorbing/producing devices.",
+              "Identify suitable power transmission system for different mechanical applications",
+              "Explain various machining/joining processes implemented in everyday life."
+            ]
+          },
+          {
+            "subject_code": "ESC-02",
+            "subject_name": "BASIC ELECTRICAL AND ELECTRONICS ENGINEERING",
+            "outcomes": [
+              "Apply the various simplification methods to analyze dc circuits.",
+              "Use the concept of electromagnetism to calculate the parameters of magnetic circuits and single-phase transformers.",
+              "Apply knowledge of ac fundamentals to analyze ac circuits.",
+              "Demonstrate the working, characteristics, and applications of diode.",
+              "Explain the working, characteristics, and applications of BJT",
+              "Perform arithmetic operations on a digital number system."
+            ]
+          },
+          {
+            "subject_code": "ESC-03",
+            "subject_name": "ENGINEERING MECHANICS",
+            "outcomes": [
+              "Apply fundamentals of Engineering Mechanics for analyzing effects of a system of forces acting on a rigid body.",
+              "Analyze various types of statically determinate pin jointed trusses.",
+              "Apply knowledge of Kinematics of rigid body motion to solve problems of bodies in motion.",
+              "Apply knowledge of Kinetics of rigid body motion to solve problems of bodies in motion.",
+              "Apply Work Energy methods and conservation of momentum principle for analyzing linear and rotational motion.",
+              "Locate centroid and center of Gravity and calculate moment of Inertia of plane lamina."
+            ]
+          },
+          {
+            "subject_code": "AEC-01",
+            "subject_name": "COMMUNICATION SKILLS",
+            "outcomes": [
+              "Understand English grammar and apply it in communication.",
+              "Prepare for competitive exams with focus on verbal ability.",
+              "Develop oral communication skills.",
+              "Enhance reading and comprehension skills.",
+              "Prepare for professional written communication.",
+              "Develop and enhance communication skills."
+            ]
+          },
+          {
+            "subject_code": "CC-01",
+            "subject_name": "SPORTS & YOGA / NCC / NSS/UBA (LIBERAL LEARNING COURSE-I)",
+            "outcomes": [
+              "Understand the basic principles and practices of Physical Education & Sports.",
+              "Understand and apply the concepts of Physical Education, Sports and Yoga with its various implications.",
+              "Develop professionalism among students to conduct, organize & officiate, Physical Education and Sports events at schools, colleges and community.",
+              "Understand and apply the knowledge of NSS/NCC in the social fabric system.",
+              "Become free thinker, open communicator, knowledgeable citizens and respectable individuals."
+            ]
+          },
+          {
+            "subject_code": "SEC-01",
+            "subject_name": "WORKSHOP PRACTICE",
+            "outcomes": [
+              "Identify various hardware and software components of a computer and compare between them.",
+              "Assemble a desktop from components supplied and Setup a working desktop system using a Raspberry Pi board.",
+              "Identify and use various electronic components and instruments and Develop basic electronic circuits on breadboards.",
+              "Demonstrate the use of an Arduino board using basic circuits.",
+              "Prepare different shaped metal work piece joints from the given metal blanks by selecting different tools and machines, Perform different types of welding of metal components.",
+              "Select different engineering tools required to perform, fitting, machining, welding and joining processes."
+            ]
+          },
+          {
+            "subject_code": "BSC-04",
+            "subject_name": "ENGINEERING MATHEMATICS-II",
+            "outcomes": [
+              "Find the solution of first order & first degree ordinary differential equations with its applications",
+              "Determine the convergence of sequences and infinite series.",
+              "Determine the differentiation of functions of complex variable that are used in various techniques dealing engineering problems.",
+              "Solve improper integrals using mathematical tools.",
+              "Sketch cartesian, polar and parametric curves.",
+              "Solve multiple integrals and use them to find area of curve and mass of lamina."
+            ]
+          },
+          {
+            "subject_code": "ESC-04",
+            "subject_name": "ENGINEERING GRAPHICS AND CAD",
+            "outcomes": [
+              "Draw the projections of oblique lines and planes",
+              "Explain views of solids and their sectional surfaces.",
+              "Visualize and draw the orthogonal views.",
+              "Draft the machine components and related parts by using commercial drafting software."
+            ]
+          },
+          {
+            "subject_code": "SEC-02",
+            "subject_name": "DATA ANALYSIS AND PROGRAMMING SKILLS",
+            "outcomes": [
+              "Design the flowchart and algorithms for the given programming problem",
+              "Implement/Write Pseudo code using C Program by appropriately selecting the control and loop structure",
+              "Implement/Write Pseudo code using C Program using Arrays.",
+              "Implement/Write Pseudo code using C Program using Functions and pointers.",
+              "Implement/Write Pseudo code using C Program using Structures and Unions"
+            ]
+          },
+          {
+            "subject_code": "CC-02",
+            "subject_name": "PROFESSIONAL PERSONALITY DEVELOPMENT",
+            "outcomes": [
+              "Understand the concept of personality development and do the SWOC analysis.",
+              "Participate effectively in group discussion.",
+              "Perform effectively in personal interview.",
+              "Prepare good quality presentation and deliver it effectively.",
+              "Inculcate soft skills for professional success.",
+              "Develop right approach for personal and professional success."
+            ]
+          },
+          {
+            "subject_code": "IKS-01",
+            "subject_name": "INTRODUCTION TO INDIAN KNOWLEDGE SYSTEM",
+            "outcomes": [
+              "Creating awareness amongst the youths about the true history and rich culture of the country;",
+              "Understanding the scientific value of the traditional knowledge of Bhārata;",
+              "Promoting the youths to do research in the various fields of Bhāratīya knowledge system;",
+              "Converting the Bhāratīya wisdom into the applied aspect of the modern scientific paradigm;",
+              "Adding career, professional and business opportunities to the youths."
+            ]
+          }
+        ]
+      },
+      "civil_engineering": {
+        "name": "Department of Civil Engineering",
+        "course_outcomes": [
+          {
+            "year": "S.Y. B. Tech Civil – Part I",
+            "subjects": [
+              {
+                "code": "CIVPCC-01",
+                "name": "STRUCTURAL MECHANICS-I",
+                "outcomes": [
+                  "Employ the knowledge of structural mechanics to depict the behavior of structures.",
+                  "Identify principal planes and find principal stresses in beams and effect of combined bending and torsion",
+                  "Identify all potential failure modes of an item",
+                  "Draw Shear force diagrams and bending moment diagrams of statically determinate beams.",
+                  "Evaluate bending and shear stresses in beams."
+                ]
+              },
+              {
+                "code": "CIVPCC-02",
+                "name": "FLUID MECHANICS AND FLUID MACHINES",
+                "outcomes": [
+                  "Identify and obtain values of fluid properties and relationship between them.",
+                  "Carry out calibration of discharge measuring equipment’s.",
+                  "Carry out hydraulic design of notched, weirs and spillways",
+                  "Analyse fluid flows and will be able to design pipe networks.",
+                  "Explain the working of Pelton, Francis and Kaplan turbines and pumps along their performance parameters.",
+                  "Apply dimensional analysis to predict physical parameters that influence the flow in fluid mechanics."
+                ]
+              },
+              {
+                "code": "CIVPCC03",
+                "name": "SURVEYING & GEOMATICS",
+                "outcomes": [
+                  "Carry out temporary adjustments of modern surveying equipment’s.",
+                  "Use the surveying instruments namely levels, theodolite, EDM, total station for surveying measurements such as horizontal/ vertical/inclined distance, horizontal/ vertical angles, bearings, reduced levels, and coordinates.",
+                  "Develop plans, draw maps and draft reports for surveying projects of Civil Engineering works.",
+                  "Use the modern surveying techniques namely remote sensing, Global positioning system and Geographic information system for Civil Engineering applications.",
+                  "Demonstrate the attributes of leadership, working in the team and professional ethics while performing the surveying projects."
+                ]
+              },
+              {
+                "code": "CIVFP-01",
+                "name": "FLUID MECHANICS LAB",
+                "outcomes": [
+                  "Comprehend physical properties of fluids and relationship between them.",
+                  "Determine metacentric height and apply Bernoulli’s equation.",
+                  "Carry out calibration of various flow measuring instruments.",
+                  "Determine head losses through pipes and solve pipe networks.",
+                  "Explain the working of hydraulic turbines and pumps along with their performance parameters."
+                ]
+              },
+              {
+                "code": "CIVFP-02",
+                "name": "BUILDING AND INFRASTRUCTURE DRAWING LAB",
+                "outcomes": [
+                  "Draw neat drawings of different building components such as doors, windows, and stairs and various types of bonds.",
+                  "Design different types of staircases commonly used in residential and public buildings.",
+                  "Plan and design a “Residential Building” according to requirements adhering to National Building Code norms and standards.",
+                  "Prepare “Permission Drawing” for Residential buildings for obtaining building permission from competent authority by using suitable “Computer Aided Drawing and Design” application software.",
+                  "Plan and design appropriate building services layout for “Furniture requirement, Electrification points, Water supply and Drainage System” for a building as per standards norms by using suitable, Computer Aided Drawing and Design“ application software."
+                ]
+              },
+              {
+                "code": "VEC01",
+                "name": "UNIVERSAL HUMAN VALUES",
+                "outcomes": [
+                  "Appreciate the essential complementarity between ‘VALUES’ and ‘SKILLS’ to ensure sustained happiness and prosperity, which are the core aspirations of all human beings.",
+                  "Develop holistic perspective towards life and profession as well as towards happiness and prosperity based on a correct understanding of the Human reality and the rest of Existence.",
+                  "Appreciate the Universal Human Values and movement towards value-based living in a natural way.",
+                  "Highlight ethical human conduct, trustful and mutually fulfilling human behavior and mutually enriching interaction with Nature."
+                ]
+              },
+              {
+                "code": "EM-01",
+                "name": "PRODUCT DEVELOPMENT AND ENTREPRENEURSHIP",
+                "outcomes": [
+                  "Understand the concept of product development.",
+                  "Identify the market strategies.",
+                  "Frame the idea and convert it into a concept.",
+                  "Identify the TRL, MRL and IRL level of product.",
+                  "Demonstrate the business canvas model and lean canvas model.",
+                  "Develop the strategies for launching the product in market."
+                ]
+              },
+              {
+                "code": "OE-01A",
+                "name": "ADVANCED MATHEMATICS & STATISTICS",
+                "outcomes": [
+                  "Compute Higher Order Linear Differential equations.",
+                  "Determine the solution of Partial Differential equation.",
+                  "Compute Mean, Mode, Median and Standard Deviations of given data.",
+                  "Solve problems by Binomial, Poisson and Normal distribution.",
+                  "Compute relationship between variables.",
+                  "Use large sample test for testing hypotheses concerning two population means and chi-square test is used to compare observed results with expected results."
+                ]
+              },
+              {
+                "code": "CIVHON-01B",
+                "name": "APPLICATIONS OF INFORMATION TECHNOLOGY AND INFORMATION SYSTEMS",
+                "outcomes": [
+                  "Use of digital tools (IT Applications) to construction practice.",
+                  "Describe Optimization techniques and production scheduling in construction",
+                  "Describe Inventory Models - Deterministic and Probabilistic Inventory models",
+                  "Interpret Computer Application, Advanced planning in construction.",
+                  "Describe models with integrated automation techniques."
+                ]
+              }
+            ]
+          },
+          {
+            "year": "S.Y. B. Tech Civil – Part II",
+            "subjects": [
+              {
+                "code": "CIVPCC-04",
+                "name": "STRUCTURAL MECHANICS-II",
+                "outcomes": [
+                  "Employ the knowledge of structural mechanics to describe the behaviour of structures under combined direct and bending and also behaviour of long columns.",
+                  "Evaluate slope and deflection in beams and analysis of 3 hinged arch",
+                  "Analyse determinate and indeterminate structural members subjected to different types of loadings.",
+                  "Discretize simple structures; identify static and kinematic degrees of freedom",
+                  "Analyse beams, trusses and frames for joint displacements, and forces in members, by force method and displacement method.",
+                  "Select and use appropriate application software for structural analysis."
+                ]
+              },
+              {
+                "code": "CIVPCC05",
+                "name": "BUILDING AND INFRASTRUCTURE PLANNING",
+                "outcomes": [
+                  "Draw line plans of different public buildings according to requirements adhering to National Building Code norms and standards.",
+                  "Select appropriate ventilation systems.",
+                  "Select appropriate building finishes.",
+                  "Plan appropriate acoustics, and sound insulation arrangements for a building.",
+                  "Plan appropriate building services for a building.",
+                  "Plan firefighting arrangements for a building"
+                ]
+              },
+              {
+                "code": "CIVPCC-06",
+                "name": "ENVIRONMENTAL ENGINEERING",
+                "outcomes": [
+                  "To evaluate water quality using various parameters and establish water demand.",
+                  "Design diverse water treatment units and strategize their operations based on raw water quality and demand.",
+                  "Plan and design water distribution systems and identify operation and maintenance problems in water supply systems and suggest suitable solutions.",
+                  "Design an appropriate sewage collection system and characterize municipal wastewater.",
+                  "Evaluate and design wastewater collection systems and treatment units, and apply low-cost treatment technologies for sewage treatment.",
+                  "Determine the suitable method for the disposal of treated or untreated wastewater."
+                ]
+              },
+              {
+                "code": "CIVSEC-03",
+                "name": "CONCRETE TECHNOLOGY, MATERIAL TESTING & EVALUATION",
+                "outcomes": [
+                  "Perform laboratory testing of various ingredients of concrete for determining their physical properties",
+                  "Explain properties of fresh and hardened concrete and apply this knowledge on field.",
+                  "Select appropriate type of concrete, admixture and chemicals for specific requirements.",
+                  "Design a concrete mix of required strength and durability, for given field conditions, using suitable ingredients",
+                  "Evaluate properties of construction materials viz. steel, bricks, timber, tiles etc. in laboratory for the quality assurance"
+                ]
+              },
+              {
+                "code": "EM-02",
+                "name": "PROJECT MANAGEMENT AND ECONOMICS",
+                "outcomes": [
+                  "Demonstrate decision making and communication as a member of a team as well as Lead a team for effective management of construction projects.",
+                  "Apply the Optimization techniques for decision making in construction industry.",
+                  "Carry out ABC analysis, Break even analysis and calculate EOQ and Inventory costs for construction project.",
+                  "Demonstrate the decision making abilities based on economics in projects and to appraise alternative projects."
+                ]
+              },
+              {
+                "code": "OE-02A",
+                "name": "ENTREPRENEURSHIP AND INNOVATION",
+                "outcomes": [
+                  "Appreciate and apply the innovation and process of innovation.",
+                  "Relate innovation and problem solving",
+                  "Demonstrate application of innovation to techno-entrepreneurship"
+                ]
+              },
+              {
+                "code": "OE-02B",
+                "name": "ENVIRONMENTAL SUSTAINABILITY",
+                "outcomes": [
+                  "Demonstrate the principles of environmental management to carryout policy analysis and prepare environment management plan.",
+                  "Apply the environmental management practices for infrastructural projects.",
+                  "Understand the environmental policies."
+                ]
+              },
+              {
+                "code": "OE-02C",
+                "name": "RENEWABLE ENERGY",
+                "outcomes": [
+                  "To understand energy scenario, energy sources and their utilization.",
+                  "To explore society’s present needs and future energy demands.",
+                  "To Study the principles of renewable energy conversion systems.",
+                  "To exposed to energy conservation methods."
+                ]
+              },
+              {
+                "code": "VEC-02",
+                "name": "PROFESSIONAL ETHICS",
+                "outcomes": [
+                  "Incplicate the human values in their behaviour.",
+                  "Demonstrate the Engineering ethics in their professional practice.",
+                  "Practice the safety and responsibility and professional rights in their professional practice.",
+                  "Incorporate the code of ethics of Global organizations such as ASME, ASCE, and IEEE."
+                ]
+              }
+            ]
+          },
+          {
+            "year": "T.Y. B. Tech Civil – Part I",
+            "subjects": [
+              {
+                "code": "CE51C",
+                "name": "DESIGN OF STEEL STRUCTURES",
+                "outcomes": [
+                  "Understand the Philosophy and design criteria, Select appropriate load combinations for ‘Limit State’ design of various elements of steel structures for strength and serviceability",
+                  "Analyze and design simple connections between structural members including Bolted and welded connections",
+                  "Analyze and design Tension members, Compression members, and their connections.",
+                  "Analyze and design of flexural members by limit state method.",
+                  "Plastic analysis of (flexural members) beams.",
+                  "Design Columns, Column base (slab base, gusseted base) for given loading conditions."
+                ]
+              },
+              {
+                "code": "CE52C",
+                "name": "GEOTECHNICAL ENGINEERING",
+                "outcomes": [
+                  "Determine various index properties of soil in the laboratory to characterize and classify the soil.",
+                  "Estimate the permeability and seepage through soil mass by applying basic hydraulic flow principles.",
+                  "Draw stress contours in soil mass by applying stress distribution theory.",
+                  "Determine shear strength parameters of soil under various drainage conditions",
+                  "Determine compaction properties and consolidation settlement of soil for given loading conditions"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "computer_science_engineering": {
+        "name": "Computer Science & Engineering",
+        "contact_email": "hod.cse@sknscoe.ac.in",
+        "course_outcomes": [
+          {
+            "year": "Sy B.Tech Sem I",
+            "subjects": [
+              {
+                "name": "Applied Mathematics-I",
+                "outcomes": [
+                  "Student can solve higher order linear differential equation with constant coefficient.",
+                  "Student can apply Laplace and inverse Laplace transforms for solving linear differential equations.",
+                  "Student can express a function in terms of sine's and cosines components so as to model simple periodic functions",
+                  "Student can solve problems on Z transform and explain its properties",
+                  "Student can find the relation between two variables for the given data using regression and explain various probability distribution functions.",
+                  "Student can solve problems based on queuing theory."
+                ]
+              },
+              {
+                "name": "Discrete Mathematical Structures",
+                "outcomes": [
+                  "Arrive at inference from the given premises applying mathematical logic",
+                  "Select the associated operations and terminologies to solve logical problems for sets, functions, and relations.",
+                  "Classify algebraic systems based on its properties and select an appropriate for given application"
+                ]
+              },
+              {
+                "name": "Data Structures",
+                "outcomes": [
+                  "Describe linear and non-linear data structures",
+                  "Implement abstract data structures",
+                  "Analyze and Implement Tree and Graph data structures",
+                  "Identify appropriate usage of data structures for a given problem"
+                ]
+              },
+              {
+                "name": "Computer Graphics",
+                "outcomes": [
+                  "Draw graphical elements using built-in graphic functions in 'C'.",
+                  "Differentiate different graphical devices.",
+                  "Draw lines, Circles and fill polygons.",
+                  "Apply simple 2D and 3D transformations to given object and create simple 2D animations",
+                  "Demonstrate different clipping algorithms, surfaces and different types of curves."
+                ]
+              },
+              {
+                "name": "Microprocessors",
+                "outcomes": [
+                  "Describe the basic building blocks, operations & the addressing modes of microprocessors.",
+                  "Write an assembly language program for 8086 microprocessor.",
+                  "Implement interfacing programs for different peripheral devices with microprocessor"
+                ]
+              },
+              {
+                "name": "Python Programming",
+                "outcomes": [
+                  "Write Python scripts using procedure-oriented approach of writing a computer program.",
+                  "Write Python scripts using Object oriented approach of writing a computer program",
+                  "Exhibit ability to use Python's standard library packages to provide solution to a given problem."
+                ]
+              }
+            ]
+          },
+          {
+            "year": "Sy B.Tech Sem II",
+            "subjects": [
+              {
+                "name": "Applied Mathematics-II",
+                "outcomes": [
+                  "Student can solve nonlinear algebraic and transcendental equations.",
+                  "Student can solve simultaneous linear and nonlinear equations.",
+                  "Students can apply numerical methods to evaluate definite integrals.",
+                  "Student can apply knowledge of basics of fuzzy set theory to solve the problems.",
+                  "Student can solve the fuzzy equations",
+                  "Students can solve a particular kind of problems arises in day to day life using simplex method and Assignment Problems."
+                ]
+              },
+              {
+                "name": "Theory Of Computation",
+                "outcomes": [
+                  "Build regular expression for a given language.",
+                  "Design different types of automata.",
+                  "Classify languages as regular and non regular language.",
+                  "Detect ambiguity in a grammar and convert into unambiguous grammar and normal forms.",
+                  "Design pushdown automata and Turing machine for a given language."
+                ]
+              },
+              {
+                "name": "Computer Organization And Architecture",
+                "outcomes": [
+                  "Describe the functional architecture of computing systems.",
+                  "Analyse various parallel programming model.",
+                  "Use ARC Processor based instructions to write assembly language program.",
+                  "Demonstrate the design aspects of memory, instruction level parallelism and multiprocessors."
+                ]
+              },
+              {
+                "name": "Computer Networks",
+                "outcomes": [
+                  "Understand the basic principles of OSI reference model and TCP/IP protocol suite for Network-communication.",
+                  "Identify the different classes of IP address for network set-up.",
+                  "Implement client-server paradigm using transport layer protocols.",
+                  "Select and use appropriate Application Layer Protocols for a given problem."
+                ]
+              },
+              {
+                "name": "Object Oriented Programming Using Java",
+                "outcomes": [
+                  "Implement Object Oriented Programming paradigm using Java language.",
+                  "Exhibit the ability to use Java runtime library APIs to provide a solution to a given problem.",
+                  "Test and debug a Java program for a given problem."
+                ]
+              }
+            ]
+          },
+          {
+            "year": "TY B.Tech Sem I",
+            "subjects": [
+              {
+                "name": "System Programming",
+                "outcomes": [
+                  "Describe the basic principles of system software and tools.",
+                  "Implement Assembler and Macros to provide program generation facilities.",
+                  "Use LPDT tools for a relevant problem to generate a scanner and parser.",
+                  "Apply linkers and loaders for execution of a program."
+                ]
+              },
+              {
+                "name": "Operating Systems",
+                "outcomes": [
+                  "Comprehend the features of operating system to formulate its role and responsibilities.",
+                  "Analyze the principles of concurrency and synchronization to provide solution to the concurrent programs.",
+                  "Simulate process scheduling and memory management techniques for CPU performance."
+                ]
+              },
+              {
+                "name": "Software Engineering",
+                "outcomes": [
+                  "Select and apply the appropriate lifecycle model for software development.",
+                  "Prepare SRS and SDS accordingly for a given problem.",
+                  "Select and apply appropriate software testing method.",
+                  "Ensure the quality of a product by applying the quality management process."
+                ]
+              },
+              {
+                "name": "Database Engineering",
+                "outcomes": [
+                  "Demonstrate basics of database systems and design database using Entity-relationship model for real time application.",
+                  "Design database using relational model for real time application and Formulate SQL.",
+                  "Analyze a database design & apply normalization.",
+                  "Create indices for faster retrieval.",
+                  "Apply transaction management for maintaining database consistency."
+                ]
+              },
+              {
+                "name": "Design And Analysis Of Algorithm",
+                "outcomes": [
+                  "Derive time and space complexity of a given algorithm",
+                  "Select appropriate algorithm design paradigm for a problem.",
+                  "Apply algorithm design paradigm for a problem.",
+                  "Describe and distinguish complexity classes of problem."
+                ]
+              },
+              {
+                "name": "Python Programming",
+                "outcomes": [
+                  "Write Python scripts using procedure and object oriented approach of writing a computer program.",
+                  "Exhibit ability to use Python's standard library packages to provide solution to a given problem.",
+                  "Test and debug python script for a given problem."
+                ]
+              },
+              {
+                "name": "Java Programming",
+                "outcomes": [
+                  "Implement Object Oriented Programming paradigm using Java language.",
+                  "Exhibit the ability to use Java runtime library APIs to provide a solution to a given problem.",
+                  "Test and debug a Java program for a given problem."
+                ]
+              },
+              {
+                "name": "Self Learning Module – I (H.S.S.)",
+                "outcomes": [
+                  "Identify the Basic Economic problems, Resource Constraints.",
+                  "Apply various theories of economics for economic growth.",
+                  "Identify causes of Inflation consequence and remedies.",
+                  "To assess the impact of International Trade, foreign exchange on Indian economy."
+                ]
+              },
+              {
+                "name": "Professional Ethics & Human Values",
+                "outcomes": [
+                  "Inculcate the human values in their behavior.",
+                  "Demonstrate the Engineering ethics in their professional practice.",
+                  "Practice the safety and responsibility and professional rights in their professional practice.",
+                  "Incorporate the code of ethics of Global organizations such as ASME, ASCE, and IEEE."
+                ]
+              }
+            ]
+          },
+          {
+            "year": "TY B.Tech Sem II",
+            "subjects": [
+              {
+                "name": "Compiler Construction",
+                "outcomes": [
+                  "Describe language translation and compiler design constructs.",
+                  "Design and develop lexical analyzer and parser.",
+                  "Apply optimization principles for generating code.",
+                  "Describe storage allocation strategies for memory allocation."
+                ]
+              },
+              {
+                "name": "Unix Operating System",
+                "outcomes": [
+                  "Describe architecture of Unix, its kernel and file system.",
+                  "Apply algorithms of regular file for inode assignment and disk block allocation.",
+                  "Use system calls and program the Shell.",
+                  "Describe structure of process, Memory and I/O management.",
+                  "Implement programs using shell script."
+                ]
+              },
+              {
+                "name": "Computer Organization And Architecture",
+                "outcomes": [
+                  "Describe the functional architecture of computing systems.",
+                  "Analyze various algorithms for arithmetic computation and arrive at fastest one.",
+                  "Use ARC Processor based instructions to write assembly language program.",
+                  "Demonstrate the design aspects of memory, instruction level parallelism and multiprocessors."
+                ]
+              },
+              {
+                "name": "Artificial Intelligence",
+                "outcomes": [
+                  "Formulate and solve sequence of actions for an agent as a search problem.",
+                  "Infer from represented knowledge using logical and probabilistic reasoning methods",
+                  "Solve agent decision problems using probability theory",
+                  "Comprehend forms of learning and demonstrate their working."
+                ]
+              },
+              {
+                "name": "Mobile Application Development",
+                "outcomes": [
+                  "Select suitable development practices for a mobile application",
+                  "Build cross platform mobile application for a given problem scenario.",
+                  "Choose suitable method of testing, signing, packaging and distribution for a mobile application."
+                ]
+              },
+              {
+                "name": "Object Oriented Modeling & Design",
+                "outcomes": [
+                  "Demonstrate basics of Object Oriented Modeling.",
+                  "Design models for real world problems using Object Modeling Technique.",
+                  "Design UML Diagrams for real world problems."
+                ]
+              },
+              {
+                "name": "Mini Project",
+                "outcomes": [
+                  "Select mini project problem of societal relevance in selected domain",
+                  "Design system architecture with due consideration of environment, sustainability and ethics.",
+                  "Develop the solution to the problem using tools, resources and frameworks.",
+                  "Engage in teamwork and communicate effectively, while observing professional ethics.",
+                  "Inculcate habit of self study and lifelong learning."
+                ]
+              },
+              {
+                "name": "Self Learning Module II (Technical) A. UI / Ux Technology",
+                "outcomes": [
+                  "Design, develop and apply styling to a web-based application.",
+                  "To be able to design responsive web design.",
+                  "Build efficient and scalable web API and application.",
+                  "Develop lightweight browser based functionalities leveraging client side scripting framework."
+                ]
+              }
+            ]
+          },
+          {
+            "year": "Be B.Tech Sem I",
+            "subjects": [
+              {
+                "name": "Distributed Systems",
+                "outcomes": [
+                  "Describe the basics of distributed systems and middleware.",
+                  "Design and simulate distributed system software modules using various methods, strategies, and techniques presented in the course that fulfils requirements for desired properties.",
+                  "Apply principles of distributed systems in a real world setting across multidisciplinary areas.",
+                  "Apply knowledge of Hadoop Distributed File system, its architecture and working for active research at the forefront of these areas."
+                ]
+              },
+              {
+                "name": "Machine Learning",
+                "outcomes": [
+                  "Interpret the need and applications of machine learning.",
+                  "Build machine learning model for a given problem.",
+                  "Analyze machine learning model to improve their accuracy."
+                ]
+              },
+              {
+                "name": "Modern Database System",
+                "outcomes": [
+                  "Implement principles of parallel and distributed database.",
+                  "Apply object-oriented design principles for the database design.",
+                  "Apply OLAP operations on a given data and use data mining algorithms for prediction.",
+                  "Use query evaluation and query optimization algorithms for query processing.",
+                  "Describe modern database technologies for Bigdata."
+                ]
+              },
+              {
+                "name": "Software Testing & Quality Assurance",
+                "outcomes": [
+                  "Identify what a software bug is, how serious they can be, and why they occur.",
+                  "Test software to meet quality objectives & requirements.",
+                  "Apply testing skills to common testing tasks.",
+                  "Perform the planning and documentation of test efforts.",
+                  "Describe software quality concepts, assurance & standards.",
+                  "Use testing tools to test software in order to improve test efficiency with automation."
+                ]
+              },
+              {
+                "name": "Data Mining",
+                "outcomes": [
+                  "Examine the types of the data to be mined for a particular application.",
+                  "Apply preprocessing statistical methods for any given raw data.",
+                  "Select and apply proper data mining algorithms to build analytical applications",
+                  "Comprehend the roles that data mining plays in various fields and manipulate different data mining techniques.",
+                  "Demonstrate and apply a wide range of Clustering, Classification and association rule mining Algorithms",
+                  "Develop and document, real-time operating systems , Programming Languages for Real-Time and Software Design Approaches of Real-Time Systems",
+                  "Recognize communication techniques and Databases required for Real-Time Systems"
+                ]
+              },
+              {
+                "name": "Web Technology",
+                "outcomes": [
+                  "Design web pages using HTML, CSS and Javascript.",
+                  "Analyze client/server side scripting technologies to meet requirements of web application and choose an appropriate one.",
+                  "Develop web application using client/server side scripting technologies for a given problem."
+                ]
+              }
+            ]
+          },
+          {
+            "year": "Be B.Tech Sem II",
+            "subjects": [
+              {
+                "name": "Management Information System",
+                "outcomes": [
+                  "Student can elaborate basic infrastructure and strategies used in information systems.",
+                  "Student can apply professional ethical codes of conduct as appropriate to industry and organizational environments",
+                  "Students can design information systems using principles of Communication Technologies.",
+                  "Students will be able to develop secure information systems."
+                ]
+              },
+              {
+                "name": "Information & Cyber Security",
+                "outcomes": [
+                  "Apply security technologies and policies to protect digital information.",
+                  "Identify & evaluate Information security threats & vulnerabilities in information system and apply security measures to real time scenario.",
+                  "Demonstrate the use of standards and cyber laws to enhance information security in the development process and infrastructure protection.",
+                  "Understand emerging abstract models for Blockchain Technology."
+                ]
+              },
+              {
+                "name": "Big Data Analytics",
+                "outcomes": [
+                  "Comprehend limitations of conventional DBMS and recognize need for Big Data Analytics.",
+                  "Compare Big data processing technologies and choose appropriate one for a given scenario.",
+                  "Use Various Big data technologies for Big data analytics",
+                  "Write Map Reduce program to process Big Data.",
+                  "Address Security and Privacy concerns for a given cloud application scenario."
+                ]
+              },
+              {
+                "name": "Deep Learning",
+                "outcomes": [
+                  "Students will be able to describe the deep neural network.",
+                  "Students will be able to design a deep neural network for a given problem.",
+                  "Students will be able to design a convolutional neural network for a given problem.",
+                  "Students will be able to design a recurrent neural network for a given problem.",
+                  "Students will be able to choose appropriate deep neural network architecture for a given problem."
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "electrical_engineering": {
+        "name": "Department of Electrical Engineering",
+        "patents": [
+          {
+            "academic_year": "2023-24",
+            "title": "Modern Load Shedding Time Management Technique Using Iot",
+            "filing_date": "14/07/2023",
+            "publication_date": "29/09/2023",
+            "application_number": "202321047446",
+            "status": "Published"
+          },
+          {
+            "academic_year": "2023-24",
+            "title": "Enhanced Power Efficiency Method For Induction Motors With Arduino-Based Power Factor Improvement",
+            "filing_date": "27/07/2023",
+            "publication_date": "29/09/2023",
+            "application_number": "202321050687",
+            "status": "Published"
+          },
+          {
+            "academic_year": "2022-23",
+            "title": "Design And Development Of Automated Library Assistant Robotic System",
+            "filing_date": "01/09/2022",
+            "publication_date": "9/16/2022",
+            "application_number": "202221049877",
+            "status": "Published"
+          },
+          {
+            "academic_year": "2022-23",
+            "title": "Design And Development Of Semi Automatic Testing Unit For Power Distribution Unit (Pdu)",
+            "filing_date": "01/09/2022",
+            "publication_date": "9/16/2022",
+            "application_number": "202221049873",
+            "status": "Published"
+          },
+          {
+            "academic_year": "2022-23",
+            "title": "Design Of Solar Grain Dryer For Storage",
+            "filing_date": "18/10/2022",
+            "publication_date": "10/21/2022",
+            "application_number": "202221059392",
+            "status": "Published"
+          },
+          {
+            "academic_year": "2022-23",
+            "title": "Design & Development Of Scalable Real-Time Electric Vehicles Charging",
+            "filing_date": "18/10/2022",
+            "publication_date": "10/21/2022",
+            "application_number": "202221059374",
+            "status": "Published"
+          },
+          {
+            "academic_year": "2021-22",
+            "title": "Smart Hybrid Electrical Vehicle Charging Station",
+            "filing_date": "16/03/2022",
+            "publication_date": "4/22/2022",
+            "application_number": "202221014260",
+            "status": "Published"
+          },
+          {
+            "academic_year": "2021-22",
+            "title": "Design, Analysis And Simulation Of Solar Inverter And Building Igbt Based Power Circuit",
+            "filing_date": "10/6/2022",
+            "publication_date": "6/22/2022",
+            "application_number": "202221033320",
+            "status": "Published"
+          }
+        ]
+      },
+      "electronics_telecommunication_engineering": {
+        "name": "Department of Electronics and Telecommunication Engineering",
+        "leadership": {
+          "president": "Prof. M. N. Navale",
+          "general_secretary": "Mr. Rohit M. Navale",
+          "principal": "Dr. K. J. Karande"
+        },
+        "course_outcomes": [
+          {
+            "class": "S.Y. B. Tech",
+            "semester": "I",
+            "subjects": [
+              {
+                "code": "ENTPCC-01",
+                "name": "Network Theory Analysis",
+                "outcomes": [
+                  "Apply different network theorems to simplify linear circuits.",
+                  "Summarize series resonance and Parallel resonance.",
+                  "Compute two port network parameters and draw equivalent network",
+                  "Determine transient and steady state response of linear circuits",
+                  "Solve circuit problems using Fourier series, Fourier transform and Laplace transform.",
+                  "Design passive filter and attenuator circuits"
+                ]
+              },
+              {
+                "code": "ENTPCC-2",
+                "name": "Electronics Circuit Analysis & Design",
+                "outcomes": [
+                  "Determine wave-shaping circuits & voltage multipliers.",
+                  "Demonstrate filter circuits and its comparison.",
+                  "Design unregulated power supply using rectifier and filter.",
+                  "Illustrate working, characteristics, and hybrid model of BJT.",
+                  "Design negative feedback amplifiers using BJT.",
+                  "Describe the construction, working & drain characteristics of JFET and MOSFET."
+                ]
+              },
+              {
+                "code": "ENTPCC-3",
+                "name": "Analog and Digital Communication",
+                "outcomes": [
+                  "Describe the fundamental concepts and various components of analog communication systems",
+                  "Explain the various techniques of generation and reception of amplitude modulation (AM), frequency modulation (FM) and phase modulation (PM) signals.",
+                  "Apply source coding techniques for the memoryless discrete sources.",
+                  "Explain pulse code modulation and binary digital modulation techniques",
+                  "Apply Linear block coding techniques for error detection & correction of block code"
+                ]
+              },
+              {
+                "code": "ENTFP-02",
+                "name": "PCB Design Lab",
+                "outcomes": [
+                  "Explain the steps involved in schematic, layout, fabrication, and assembly process of PCB design",
+                  "Design (schematic and layout) PCB for analog circuits, and digital circuits",
+                  "Design (schematic and layout) and fabricate PCB for simple circuits",
+                  "Evaluate an electronic printed circuit board for a specific application"
+                ]
+              },
+              {
+                "code": "EM-01",
+                "name": "Product Development and Entrepreneurship",
+                "outcomes": [
+                  "Understand the concept of product development",
+                  "Identify the market strategies",
+                  "Frame the idea and convert it into a concept",
+                  "Identify the TRL, MRL and IRL level of product",
+                  "Demonstrate the business canvas model and lean canvas model",
+                  "Develop the strategies for launching the product in marketing"
+                ]
+              },
+              {
+                "code": "ENTMDM- 01B",
+                "name": "Sensor Technology",
+                "outcomes": [
+                  "Describe the classification depends on application.",
+                  "Explain the applications of Industrial Sensors.",
+                  "Analyse the applications of Medical Sensors."
+                ]
+              },
+              {
+                "code": "OE-01E",
+                "name": "Mathematics for software and hardware applications",
+                "outcomes": [
+                  "Compute higher order linear differential equations.",
+                  "Solve Laplace transforms of given functions",
+                  "Compute Z-transforms of given functions",
+                  "Determine the numerical solutions of transcendental equations, ordinary differential equations and numerical integrations.",
+                  "Compute Fourier series and half range Fourier series.",
+                  "Solve the problems of Fourier integral and Fourier transform"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "T.Y. B.Tech",
+            "semester": "I",
+            "subjects": [
+              {
+                "code": "ENTPCC-07",
+                "name": "Electromagnetic Field Theory",
+                "outcomes": [
+                  "Calculate mathematical concepts related to electromagnetic vector fields.",
+                  "Use Electrostatic laws for various parameters of the Electrostatic field",
+                  "Determine various parameters of magneto static fields using Magneto static laws.",
+                  "Examine Maxwell's equations for static, Time varying and Harmonic field.",
+                  "Solve EM waves and its propagation through different media.",
+                  "Apply knowledge of Smith chart to determine parameters of transmission line"
+                ]
+              },
+              {
+                "code": "ENTPCC-08",
+                "name": "Digital Signal Processing",
+                "outcomes": [
+                  "Describe the core concepts of DSP, including stability, correlation, and digital transfer functions.",
+                  "Apply DFT and FFT techniques for frequency domain analysis and filtering of signals.",
+                  "Analyze and solve problems related to long sequence filtering using overlap-save and overlap-add methods.",
+                  "Describe FIR and IIR filters using various techniques",
+                  "Explain realization structures for FIR and IIR filters using direct, cascade, and parallel forms.",
+                  "Apply DSP applications in focusing on audio, telecommunication, and radar systems."
+                ]
+              },
+              {
+                "code": "ENTPCC-08",
+                "name": "Microcontrollers and Applications",
+                "outcomes": [
+                  "Differentiate between CISC and RISC Microcontroller architectures.",
+                  "Describe the fundamental features and operation of 8051 microcontroller.",
+                  "Develop an application program for microcontroller hardware interfacing using assembly and C languages",
+                  "Describe the architecture, memory organization and features of PIC16f877A",
+                  "Explain the various core and peripheral features of PIC16f877A",
+                  "Develop programming for Arduino to interface with various sensors."
+                ]
+              },
+              {
+                "code": "ENTPEC-01A",
+                "name": "Digital Logic Design",
+                "outcomes": [
+                  "Demonstrate the use of codes and k-map minimization techniques in digital circuits.",
+                  "Design combinational logic circuits using logic gates.",
+                  "Explain various characteristics of logic IC families.",
+                  "Model various flip-flops using NAND gates.",
+                  "Design asynchronous and synchronous sequential logic circuits.",
+                  "Apply concepts of state machines for designing digital applications."
+                ]
+              },
+              {
+                "code": "AEC-02",
+                "name": "Creativity and Design Thinking",
+                "outcomes": [
+                  "Describe the critical design thinking skills needed to either improve an existing product or design a new product.",
+                  "Demonstrate the ability to generate and evaluate creative ideas using ideation techniques.",
+                  "Apply Creativity and Prototyping to refine product designs effectively.",
+                  "Implement sustainable design principles to the engineering design process."
+                ]
+              },
+              {
+                "code": "OE-03",
+                "name": "Interdisciplinary Mini Project",
+                "outcomes": [
+                  "Apply interdisciplinary knowledge, teamwork and collaboration skills to design and implement innovative solutions to engineering problems.",
+                  "Develop integration to emerging technologies in engineering and their applications into project design and development.",
+                  "Apply ethical principles and sustainable development goals in engineering design.",
+                  "Develop a comprehensive project report with proper documentation."
+                ]
+              },
+              {
+                "code": "ENTMDM-03",
+                "name": "IoT Networks and Security",
+                "outcomes": [
+                  "Explain the Architecture of Internet of Things.",
+                  "Use Design of IoT networks",
+                  "Describe IoT communications and Networks",
+                  "Describe different IoT security",
+                  "Describe the health monitoring of different objects."
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "mechanical_engineering": {
+        "name": "Department of Mechanical Engineering",
+        "course_outcomes": [
+          {
+            "course_code": "MECH PCC-01",
+            "course_name": "APPLIED THERMODYNAMICS",
+            "academic_year": "2024-25",
+            "outcomes": [
+              "Apply mathematics and laws of thermodynamics to solve engineering problems.",
+              "Evaluate steam properties and analyze the performance of steam generators using the steam table.",
+              "Apply knowledge of basic thermodynamic concepts for the analysis of vapour power cycles",
+              "Describe the thermodynamics of steam nozzles and analysis of steam turbine",
+              "Explain steam condensers for various applications.",
+              "Calculate various performance parameters of reciprocating air compressors & determine lubricant properties."
+            ]
+          },
+          {
+            "course_code": "MECHPCC-03",
+            "course_name": "MECHANICS OF MATERIALS",
+            "academic_year": "2024-25",
+            "outcomes": [
+              "Demonstrate fundamental knowledge of different types stress and loading condition.",
+              "Compute the stresses in basic mechanical components under axial, torsional and flexural loading.",
+              "Draw and interpret SFD and BMD for different types of loads and support conditions.",
+              "Develop shear force and bending moment diagrams to analyze bending and shear stress offered by beam.",
+              "Determine slope and deflection of beam under concentrated and uniformly distributed load."
+            ]
+          },
+          {
+            "course_code": "MECHPCC-02",
+            "course_name": "MANUFACTURING PROCESSES",
+            "academic_year": "2024-25",
+            "outcomes": [
+              "Demonstrate the different types of pattern and explain detailed casting process.",
+              "Identify appropriate melting and molding technique with classification of different defects in casting.",
+              "Select and explain in brief about fabrication process for engineering problems.",
+              "Illustrate and compare the different types of forming processes.",
+              "Select suitable use of various advanced forming process.",
+              "Illustrate different rapid prototyping techniques."
+            ]
+          },
+          {
+            "course_code": "MECHFP-01",
+            "course_name": "MINI-PROJECT ON WORKSHOP PRACTICE",
+            "academic_year": "2024-25",
+            "outcomes": [
+              "Demonstrate practical knowledge",
+              "Develop manufacturing skills",
+              "Enhance drawing understanding skills",
+              "Cost and time estimation",
+              "Enhance skills of PPC",
+              "Do material requirement and planning"
+            ]
+          },
+          {
+            "course_code": "MECHMDM-01A",
+            "course_name": "Fundamentals of Material Science and Engineering",
+            "academic_year": "2024-25",
+            "outcomes": [
+              "Describe and distinguish between different engineering materials on the basis of their structure.",
+              "Select suitable Ferrous material for various Engineering applications.",
+              "Select suitable Non-ferrous material for various Engineering applications.",
+              "Classify and select different types of Polymer materials for various Engineering applications.",
+              "Explain classification, properties and applications of Ceramics materials.",
+              "Describe the advantages and limitations of New materials over conventional materials"
+            ]
+          },
+          {
+            "course_code": "MECHPCC-04",
+            "course_name": "KINEMATICS AND THEORY OF MACHINE",
+            "academic_year": "2024-25",
+            "outcomes": [
+              "Select Mechanism for different applications",
+              "Perform velocity and acceleration analysis of mechanisms",
+              "Develop cam profile for given set of motion inputs.",
+              "Select gears and design gear trains for given application",
+              "Explain types of governors and their characteristics",
+              "Do balancing of rotary and reciprocating masses"
+            ]
+          },
+          {
+            "course_code": "MECHPCC-05",
+            "course_name": "MACHINE DRAWING",
+            "academic_year": "2024-25",
+            "outcomes": [
+              "Apply BIS Convention in drawing mechanical components and assembly drawings",
+              "Use geometrical, dimensions, tolerances and symbols in part and assembly drawing.",
+              "Draw assembly, details drawing and identify applications of same"
+            ]
+          },
+          {
+            "course_code": "MECHPCC-06",
+            "course_name": "FLUID MECHANICS AND FLUID MACHINES",
+            "academic_year": "2024-25",
+            "outcomes": [
+              "Explain and apply principles of fluid statics to analyze the equilibrium and stability of submerged and floating bodies.",
+              "Apply mathematical models to describe fluid motion, enabling the analysis of streamlines, potential flow, and velocity components.",
+              "Illustrate major and minor energy losses in pipe systems using empirical equation",
+              "Apply dimensional analysis to predict forces on immersed bodies, deriving dimensionless parameters for a comprehensive understanding of fluid properties.",
+              "Analyze impulse and reaction water turbines.",
+              "Calculate various parameters of centrifugal Pumps."
+            ]
+          },
+          {
+            "course_code": "MECHVSC-01",
+            "course_name": "ADVANCED LAB ON CAD",
+            "academic_year": "2024-25",
+            "outcomes": [
+              "Classify the drafting & modeling techniques.",
+              "Use software package for different drafting & modeling requirements of industry.",
+              "Perform preliminary steps required while working on high-end CAD/CAM software's.",
+              "Develop logical programs required for parametric modeling."
+            ]
+          }
+        ]
+      }
+    },
+    "teaching_learning": {
+      "guardian_teacher_scheme": "A scheme of Local Guardian Teacher for every 20 students exists in each department to understand academic progress and individual problems.",
+      "academic_calendar": "The entire semester activities are planned and displayed at the beginning of the semester by a well-prepared Academic Calendar.",
+      "continuous_assessment": "Based on well-defined internal assessment norms and is supported by two unit tests during the semester. LCD presentations, GD, and other regular co-curricular activities are incorporated, and the performance of these activities is reflected in term work marks.",
+      "expert_lectures": "Invited lectures by experts from industries and academia, technical festivals, workshops, and seminars are regularly conducted for the overall development of students."
+    },
+    "library": {
+      "description": "Fully fledged library with all required reference books, Journals, periodicals, and a reading hall with a 400-seating capacity is supported by qualified staff."
+    }
+  },
+  "facilities": {
+    "campus": [
+      "Fully residential campus with excellent infrastructure",
+      "Well-equipped hostel facilities",
+      "Computer centre",
+      "Hygienic mess and canteen",
+      "Dispensary",
+      "ATM",
+      "Gymnasium",
+      "300 MBPS internet connectivity",
+      "E-Learning facilities"
+    ],
+    "laboratories": "All laboratories of each department has modern and state-of-art equipment's with all required hardware's and software's."
+  },
+  "research_and_innovation": {
+    "aicte_idealab": "Information available at: https://www.sknscoe.ac.in/aicte-idealab.php"
+  },
+  "placements": {
+    "centralized_placement_cell": "Sinhgad Institutes have a Centralized Placement cell for all Engineering Colleges under the Sinhgad aegis, and we are confident of 100% Placement of our students at SKNSCOE.",
+    "more_info": "https://www.sknscoe.ac.in/Placements.php"
+  },
+  "admissions": {
+    "info_link": "https://www.sknscoe.ac.in/Admission.php"
+  },
+  "nirf": {
+    "info_link": "https://www.sknscoe.ac.in/nirf.php"
+  },
+  "alumni": {
+    "info_link": "https://www.sknscoe.ac.in/Alumni.php"
+  },
+  "syllabus": {
+    "info_link": "https://www.sknscoe.ac.in/Syllabus.php"
+  },
+  "curriculum": {
+    "info_link": "https://www.sknscoe.ac.in/curriculum.php"
+  },
+  "academic_performance_ambience": {
+    "info_link": "https://www.sknscoe.ac.in/academic_performance_ambience.php"
+  },
+  "research": {
+    "info_link": "https://www.sknscoe.ac.in/Research.php"
+  },
+  "governance": {
+    "governing_body": "https://www.sknscoe.ac.in/governing.php",
+    "governance_structure": "https://www.sknscoe.ac.in/governance.php"
+  },
+  "photo_gallery": {
+    "link": "https://www.sknscoe.ac.in/hogallery.php"
+  },
+  "contact": {
+    "page_link": "https://www.sknscoe.ac.in/contact-us.php",
+    "social_media": {
+      "facebook": "https://www.facebook.com/sinhgad.pandharpur/",
+      "instagram": "https://www.instagram.com/sinhgadpandharpur/"
+    }
+  }
+}

@@ -1,0 +1,253 @@
+Database: college_system_cse
+
+List of Tables:
+1. admin_student_messages
+2. announcements
+3. attendance
+4. chat_messages
+5. classes
+6. courses
+7. departments
+8. event_registrations
+9. events
+10. fees
+11. fines
+12. marks
+13. notifications
+14. students
+15. subjects
+16. users
+
+================================================================================
+Table Schemas
+================================================================================
+
+1. admin_student_messages
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| message_id    | int         | NO   | PRI | NULL    | auto_increment |
+| sender_id     | int         | NO   | MUL | NULL    |                |
+| sender_role   | varchar(20) | NO   |     | NULL    |                |
+| receiver_id   | int         | NO   | MUL | NULL    |                |
+| receiver_role | varchar(20) | NO   |     | NULL    |                |
+| content       | text        | NO   |     | NULL    |                |
+| is_read       | tinyint(1)  | YES  |     | NULL    |                |
+| created_at    | datetime    | YES  |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+
+2. announcements
++-----------------+--------------------------------------+------+-----+---------+----------------+
+| Field           | Type                                 | Null | Key | Default | Extra          |
++-----------------+--------------------------------------+------+-----+---------+----------------+
+| announcement_id | int                                  | NO   | PRI | NULL    | auto_increment |
+| title           | varchar(200)                         | NO   |     | NULL    |                |
+| message         | text                                 | NO   |     | NULL    |                |
+| target          | enum('all','class','dept','student') | YES  |     | NULL    |                |
+| target_id       | int                                  | YES  |     | NULL    |                |
+| priority        | enum('low','normal','high','urgent') | YES  |     | NULL    |                |
+| is_active       | tinyint(1)                           | YES  |     | NULL    |                |
+| created_at      | datetime                             | YES  |     | NULL    |                |
+| expires_at      | datetime                             | YES  |     | NULL    |                |
++-----------------+--------------------------------------+------+-----+---------+----------------+
+
+3. attendance
++-----------------------+--------------+------+-----+---------+----------------+
+| Field                 | Type         | Null | Key | Default | Extra          |
++-----------------------+--------------+------+-----+---------+----------------+
+| attendance_id         | int          | NO   | PRI | NULL    | auto_increment |
+| student_id            | int          | NO   | MUL | NULL    |                |
+| subject_id            | int          | NO   | MUL | NULL    |                |
+| present_count         | int          | YES  |     | NULL    |                |
+| absent_count          | int          | YES  |     | NULL    |                |
+| late_count            | int          | YES  |     | NULL    |                |
+| total_classes         | int          | YES  |     | NULL    |                |
+| attendance_percentage | decimal(5,2) | YES  |     | NULL    |                |
+| academic_year         | varchar(10)  | YES  |     | NULL    |                |
+| updated_at            | datetime     | YES  |     | NULL    |                |
++-----------------------+--------------+------+-----+---------+----------------+
+
+4. chat_messages
++-----------------------+--------------+------+-----+---------+----------------+
+| Field                 | Type         | Null | Key | Default | Extra          |
++-----------------------+--------------+------+-----+---------+----------------+
+| id                    | int          | NO   | PRI | NULL    | auto_increment |
+| user_id               | int          | NO   | MUL | NULL    |                |
+| message               | text         | NO   |     | NULL    |                |
+| response              | text         | YES  |     | NULL    |                |
+| intent                | varchar(100) | YES  |     | NULL    |                |
+| confidence            | float        | YES  |     | NULL    |                |
+| sentiment_polarity    | float        | YES  |     | NULL    |                |
+| sentiment_label       | varchar(20)  | YES  |     | NULL    |                |
+| has_empathetic_prefix | tinyint(1)   | YES  |     | NULL    |                |
+| timestamp             | datetime     | YES  |     | NULL    |                |
++-----------------------+--------------+------+-----+---------+----------------+
+
+5. classes
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| class_id      | int         | NO   | PRI | NULL    | auto_increment |
+| dept_id       | int         | YES  | MUL | NULL    |                |
+| class_name    | varchar(50) | NO   |     | NULL    |                |
+| class_code    | varchar(20) | NO   | UNI | NULL    |                |
+| academic_year | varchar(10) | YES  |     | NULL    |                |
+| is_active     | tinyint(1)  | YES  |     | NULL    |                |
+| created_at    | datetime    | YES  |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+
+6. courses
++------------------+--------------------------------------------+------+-----+---------+----------------+
+| Field            | Type                                       | Null | Key | Default | Extra          |
++------------------+--------------------------------------------+------+-----+---------+----------------+
+| course_id        | int                                        | NO   | PRI | NULL    | auto_increment |
+| title            | varchar(200)                               | NO   |     | NULL    |                |
+| description      | text                                       | YES  |     | NULL    |                |
+| duration_weeks   | int                                        | YES  |     | NULL    |                |
+| difficulty_level | enum('Beginner','Intermediate','Advanced') | YES  |     | NULL    |                |
+| is_active        | tinyint(1)                                 | YES  |     | NULL    |                |
+| created_at       | datetime                                   | YES  |     | NULL    |                |
++------------------+--------------------------------------------+------+-----+---------+----------------+
+
+7. departments
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| dept_id     | int          | NO   | PRI | NULL    | auto_increment |
+| dept_name   | varchar(100) | NO   |     | NULL    |                |
+| dept_code   | varchar(10)  | NO   | UNI | NULL    |                |
+| description | text         | YES  |     | NULL    |                |
+| is_active   | tinyint(1)   | YES  |     | NULL    |                |
+| created_at  | datetime     | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+
+8. event_registrations
++-----------------+----------+------+-----+---------+----------------+
+| Field           | Type     | Null | Key | Default | Extra          |
++-----------------+----------+------+-----+---------+----------------+
+| registration_id | int      | NO   | PRI | NULL    | auto_increment |
+| event_id        | int      | NO   | MUL | NULL    |                |
+| student_id      | int      | NO   | MUL | NULL    |                |
+| registered_at   | datetime | YES  |     | NULL    |                |
++-----------------+----------+------+-----+---------+----------------+
+
+9. events
++----------------------+-------------------------------------------------------------------------------------------------------------------------+------+-----+---------+----------------+
+| Field                | Type                                                                                                                    | Null | Key | Default | Extra          |
++----------------------+-------------------------------------------------------------------------------------------------------------------------+------+-----+---------+----------------+
+| event_id             | int                                                                                                                     | NO   | PRI | NULL    | auto_increment |
+| title                | varchar(200)                                                                                                            | NO   |     | NULL    |                |
+| description          | text                                                                                                                    | YES  |     | NULL    |                |
+| event_date           | date                                                                                                                    | NO   |     | NULL    |                |
+| event_time           | time                                                                                                                    | YES  |     | NULL    |                |
+| location             | varchar(200)                                                                                                            | YES  |     | NULL    |                |
+| event_type           | enum('workshop','seminar','conference','cultural','sports','academic','hackathon','competition','club_event','general') | YES  |     | NULL    |                |
+| max_participants     | int                                                                                                                     | YES  |     | NULL    |                |
+| current_participants | int                                                                                                                     | YES  |     | NULL    |                |
+| organized_by         | varchar(100)                                                                                                            | YES  |     | NULL    |                |
+| registration_link    | varchar(500)                                                                                                            | YES  |     | NULL    |                |
+| is_active            | tinyint(1)                                                                                                              | YES  |     | NULL    |                |
+| created_at           | datetime                                                                                                                | YES  |     | NULL    |                |
++----------------------+-------------------------------------------------------------------------------------------------------------------------+------+-----+---------+----------------+
+
+10. fees
++-------------------+---------------------------------+------+-----+---------+----------------+
+| Field             | Type                            | Null | Key | Default | Extra          |
++-------------------+---------------------------------+------+-----+---------+----------------+
+| fee_id            | int                             | NO   | PRI | NULL    | auto_increment |
+| student_id        | int                             | NO   | UNI | NULL    |                |
+| total_amount      | decimal(10,2)                   | YES  |     | NULL    |                |
+| paid_amount       | decimal(10,2)                   | YES  |     | NULL    |                |
+| due_amount        | decimal(10,2)                   | YES  |     | NULL    |                |
+| payment_status    | enum('Paid','Partial','Unpaid') | YES  |     | NULL    |                |
+| last_payment_date | date                            | YES  |     | NULL    |                |
+| created_at        | datetime                        | YES  |     | NULL    |                |
+| updated_at        | datetime                        | YES  |     | NULL    |                |
++-------------------+---------------------------------+------+-----+---------+----------------+
+
+11. fines
++--------------+-----------------------------------------------+------+-----+---------+----------------+
+| Field        | Type                                          | Null | Key | Default | Extra          |
++--------------+-----------------------------------------------+------+-----+---------+----------------+
+| fine_id      | int                                           | NO   | PRI | NULL    | auto_increment |
+| student_id   | int                                           | NO   | MUL | NULL    |                |
+| reason       | varchar(255)                                  | NO   |     | NULL    |                |
+| amount       | decimal(10,2)                                 | NO   |     | NULL    |                |
+| status       | enum('Pending','Pending Approval','Approved') | YES  |     | NULL    |                |
+| receipt_data | longtext                                      | YES  |     | NULL    |                |
+| issued_date  | datetime                                      | YES  |     | NULL    |                |
+| updated_at   | datetime                                      | YES  |     | NULL    |                |
++--------------+-----------------------------------------------+------+-----+---------+----------------+
+
+12. marks
++----------------+----------+------+-----+---------+----------------+
+| Field          | Type     | Null | Key | Default | Extra          |
++----------------+----------+------+-----+---------+----------------+
+| mark_id        | int      | NO   | PRI | NULL    | auto_increment |
+| student_id     | int      | NO   | MUL | NULL    |                |
+| subject_id     | int      | NO   | MUL | NULL    |                |
+| total_marks    | int      | YES  |     | NULL    |                |
+| obtained_marks | int      | YES  |     | NULL    |                |
+| exam_date      | date     | YES  |     | NULL    |                |
+| created_at     | datetime | YES  |     | NULL    |                |
+| updated_at     | datetime | YES  |     | NULL    |                |
++----------------+----------+------+-----+---------+----------------+
+
+13. notifications
++-----------------+------------------------------------------+------+-----+---------+----------------+
+| Field           | Type                                     | Null | Key | Default | Extra          |
++-----------------+------------------------------------------+------+-----+---------+----------------+
+| notification_id | int                                      | NO   | PRI | NULL    | auto_increment |
+| user_id         | int                                      | NO   | MUL | NULL    |                |
+| title           | varchar(200)                             | NO   |     | NULL    |                |
+| message         | text                                     | NO   |     | NULL    |                |
+| type            | enum('info','warning','success','error') | YES  |     | NULL    |                |
+| is_read         | tinyint(1)                               | YES  |     | NULL    |                |
+| created_at      | datetime                                 | YES  |     | NULL    |                |
++-----------------+------------------------------------------+------+-----+---------+----------------+
+
+14. students
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| student_id       | int          | NO   | PRI | NULL    | auto_increment |
+| user_id          | int          | NO   | UNI | NULL    |                |
+| roll_no          | varchar(20)  | NO   | MUL | NULL    |                |
+| class_id         | int          | NO   | MUL | NULL    |                |
+| admission_year   | int          | NO   |     | NULL    |                |
+| admission_date   | date         | YES  |     | NULL    |                |
+| guardian_name    | varchar(100) | YES  |     | NULL    |                |
+| guardian_contact | varchar(15)  | YES  |     | NULL    |                |
+| address          | text         | YES  |     | NULL    |                |
+| is_active        | tinyint(1)   | YES  |     | NULL    |                |
+| created_at       | datetime     | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+
+15. subjects
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| subject_id   | int          | NO   | PRI | NULL    | auto_increment |
+| class_id     | int          | NO   | MUL | NULL    |                |
+| subject_name | varchar(100) | NO   |     | NULL    |                |
+| subject_code | varchar(20)  | NO   |     | NULL    |                |
+| credits      | int          | YES  |     | NULL    |                |
+| description  | text         | YES  |     | NULL    |                |
+| is_active    | tinyint(1)   | YES  |     | NULL    |                |
+| created_at   | datetime     | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+
+16. users
++------------+-------------------------+------+-----+---------+----------------+
+| Field      | Type                    | Null | Key | Default | Extra          |
++------------+-------------------------+------+-----+---------+----------------+
+| user_id    | int                     | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(100)            | NO   |     | NULL    |                |
+| email      | varchar(120)            | NO   | UNI | NULL    |                |
+| contact_no | varchar(15)             | YES  |     | NULL    |                |
+| password   | varchar(255)            | NO   |     | NULL    |                |
+| role       | enum('admin','student') | NO   |     | NULL    |                |
+| is_active  | tinyint(1)              | YES  |     | NULL    |                |
+| created_at | datetime                | YES  |     | NULL    |                |
+| updated_at | datetime                | YES  |     | NULL    |                |
++------------+-------------------------+------+-----+---------+----------------+

@@ -1,0 +1,141 @@
+{
+  "department": "Training and Placement Cell",
+  "central_placement_cell": {
+    "about": "Considering the large number of students pursuing various courses from all Sinhgad Institutes, a Central Placement Cell (CPC) has been constituted. The centralized Placement activity has resulted in maximizing resources of Placement teams providing ample opportunities for students and logistic convenience to the corporates."
+  },
+  "dean_message": {
+    "name": "Prof. J.N. Pitambare",
+    "designation": "Dean Training & Placement (Engg)",
+    "message": "We at central training & placement cell always put all out efforts to satisfy the students expectations for their future career goals. After graduation some students are planning to go for higher education & we organize seminar, lectures for appropriate selection of course, university. We have developed entrepreneurship cell to help & guide the students aspiring to go ahead with entrepreneurship. For the majority of the students thinking of making a career in the best corporate, we work on two parameters: 1. To develop their personality by way of conducting personality development programs by expert faculty members as well as industrial experts. 2. Our close association with best corporate and our campus connect initiative is helping us in organizing good number of campus drives for entry level recruitment. In nutshell the idea of training & placement cell is to prepare graduates while at college, who are not only well equipped in engineering subjects and software engineering fundamentals, but also have the ability to integrate the learning across the foundation areas, to apply them in practical situations, and also have professional skills to effectively compete in today’s market place, such as teamwork, project management, cross functional networking, effective communications, logical & innovative thinking.",
+    "advice": "LET’S BE ALWAYS HAPPY BY MAKING THINKING RIGHT TO MAKE THE LIFE BEAUTIFUL, CHEERFUL, SMILING & BRIGHT"
+  },
+  "tpo_message": {
+    "name": "Dr. Sameer Katekar",
+    "designation": "Training & Placement Officer",
+    "message": "We SKNSCOE training and placement team is always striving hard for imbibing employability skills among the students. Training is foundation for the placement. We are having Memorandum Of Understanding (MOU) under CSR activities with many companies like GTT Barclay, Rubicon, Zensar, GitHub, Mahindra and Mahindra, Fuel For nation, Anudip Foundation etc. for up-skilling budding Engineers. Zensar is providing free technical training on SQL, manual testing, Python, Core JAVA, Advanced JAVA as well as aptitude and soft skill training for third year Engineering students. Fuel For Nation is supporting free training for third year Engineering students in domain of Artificial Intelligence and Machine Learning. Anudip Foundation gave dot net and JAVA programming free training for up-gradation of coding skills among Engineering students. GTT Barclay helps for grooming students in C, C++ and English communication domain without charging any money from the students. Rubicon trains life skills among Engineering students at absolutely free of cost. Mahindra and Mahindra focuses on woman empowerment through different free soft skill trainings. We have successfully started foreign language (Japanese) training from first year of Engineering so that students will have N5, N4, N3 JLPT certification before entering into corporate world. In addition to this, we have internal trainer’s team who takes care of overall development of students before facing campus placement interviews. Every year we are successful to bring more than 150 plus top MNC for campus placement drives for our college students."
+  },
+  "vision": "To develop national and international links with the business organizations to be able to create meaningful relationship & opportunities for the placement of the students in the global job markets. To develop students who are globally employable & ready hands to the industry.",
+  "mission": [
+    "To strengthen and enhance Industry – Institute partnership by way of campus connect.",
+    "To create maximum opportunities for the placements of the eligible students in the job market by establishing a rapport with the industry people.",
+    "To impart personality development training to the students to face this competitive era."
+  ],
+  "payment_details": {
+    "bank_account": {
+      "account_name": "SKN Sinhgad College of Engineering Korti, Pandharpur",
+      "account_number": "2676201000169",
+      "ifsc_code": "CNRB0002676",
+      "bank_name": "Canara Bank, Pandharpur"
+    },
+    "qr_code_scan": "Scan QR Code for Payment"
+  },
+  "placement_team": [
+    {
+      "sr_no": 1,
+      "name": "Dr. Katekar S. D.",
+      "designation": "Chairman"
+    },
+    {
+      "sr_no": 2,
+      "name": "Prof. Kulkarni A. S.",
+      "designation": "Member"
+    },
+    {
+      "sr_no": 3,
+      "name": "Prof. Kamble A. A.",
+      "designation": "Member"
+    },
+    {
+      "sr_no": 4,
+      "name": "Prof. Korake D. M.",
+      "designation": "Member"
+    },
+    {
+      "sr_no": 5,
+      "name": "Prof. Godase V. V.",
+      "designation": "Member"
+    },
+    {
+      "sr_no": 6,
+      "name": "Prof. Savase B. S.",
+      "designation": "Member"
+    },
+    {
+      "sr_no": 7,
+      "name": "Prof. Linge S. G.",
+      "designation": "Member"
+    }
+  ],
+  "placement_statistics": {
+    "year": "Recent",
+    "total_students_placed_listed": 238,
+    "top_packages": [
+      {
+        "name": "Ashwini Bhimrao Pawar",
+        "branch": "Mech",
+        "company": "Cummins Technologies India Pvt. Ltd.",
+        "package_lpa": 10.0
+      },
+      {
+        "name": "Shubham Vinayak Sadigale",
+        "branch": "CSE",
+        "company": "CDAC PUNE",
+        "package_lpa": 7.11
+      },
+      {
+        "name": "Tejas Dhananjay Bhong",
+        "branch": "E&TC",
+        "company": "TCS",
+        "package_lpa": 7.0
+      },
+      {
+        "name": "Disha Chandrakant Honmane",
+        "branch": "CSE",
+        "company": "MMJS Data Phi",
+        "package_lpa": 6.5
+      },
+      {
+        "name": "Radhika Umesh Chavan",
+        "branch": "Elect.",
+        "company": "APTIV Components India Pvt. Ltd.",
+        "package_lpa": 6.09
+      }
+    ],
+    "major_recruiters": [
+      "Cummins Technologies",
+      "TCS",
+      "Capgemini",
+      "Accenture",
+      "Cognizant",
+      "LTI Mindtree",
+      "Tech Mahindra",
+      "Reliance Industries Ltd.",
+      "Worley",
+      "Adani Power Ltd.",
+      "Bajaj Auto Limited"
+    ],
+    "sample_placement_list": [
+      {
+        "sr_no": 1,
+        "name": "Ashwini Bhimrao Pawar",
+        "branch": "Mech",
+        "company": "Cummins Technologies India Pvt. Ltd.",
+        "package_lpa": 10.0
+      },
+      {
+        "sr_no": 2,
+        "name": "Shubham Vinayak Sadigale",
+        "branch": "CSE",
+        "company": "CDAC PUNE",
+        "package_lpa": 7.11
+      },
+      {
+        "sr_no": 238,
+        "name": "Sakshi Tukaram Katkar",
+        "branch": "CSE",
+        "company": "GTasterix",
+        "package_lpa": null
+      }
+    ]
+  }
+}

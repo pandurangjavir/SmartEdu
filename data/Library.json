@@ -1,0 +1,338 @@
+{
+  "page": "LIBRARY",
+  "about": "SKN Sinhgad College of Engineering, Pandharpur established by Savitribai Phule Shikshan Prasarak Mandal (SPSPM), SKNSCOE Library is one of the best engineering college libraries in the state. It started its function with a vision to serve the information needs of its users and it mainly holds books related to engineering and allied subjects & discipline like Mechanical, Civil, Computer, and Electronics & Telecommunication & Electrical. We added new sections like competitive exam its realms. Library also plays a vital role in acquisition, organization and dissemination of knowledge. SKN Sinhgad College of Engineering, College library system supports the teaching-learning program of institute.",
+  "collection_highlights": {
+    "total_books": 19119,
+    "total_ebooks": 5000,
+    "total_titles": 4650,
+    "total_journals_periodicals": 91,
+    "total_ejournals": "1000+",
+    "total_cds": 414,
+    "total_student_projects": {
+      "ug": 345,
+      "pg": 326,
+      "total": 671
+    },
+    "total_newspapers": 7
+  },
+  "facilities_and_services": {
+    "classification": "Dewey Decimal Classification Scheme",
+    "automation_software": "KOHA Library software",
+    "access_system": "Open access system with OPAC (Online Public Access Catalogue)",
+    "special_memberships": [
+      "DELNET (Inter library loan) for resource sharing",
+      "NPTEL facility to access video lectures"
+    ],
+    "library_timing": {
+      "monday_to_friday": "8:30 a.m to 6:30 p.m (Reading hall remains open 24 hours)",
+      "holidays": "8:30 a.m. to 6:00 p.m (Reading hall remains open 24 hours) [as per demands]",
+      "before_exam_days": "8:30 a.m. to 8:30 p.m (Reading hall remains open 24 hours)",
+      "during_exam_days": "8:30 a.m. to 10:00 p.m (Reading hall remains open 24 hours)",
+      "during_vacation": "8:30 a.m. to 6:00 p.m.",
+      "reading_hall": "24*7"
+    },
+    "infrastructure": {
+      "building": "Separate four floor building",
+      "built_up_area": "1030 sq. mt",
+      "reading_hall_area": "3090 sq. mt",
+      "sections": [
+        "Circulation section",
+        "Stack section",
+        "Acquisition and technical section",
+        "Journal section",
+        "Reference section",
+        "Digital Library section"
+      ]
+    },
+    "services": [
+      "Library Automation (KOHA software for in-house operations: Catalogue, Circulation, Utility, Serial Control, Acquisition)",
+      "Books circulation services (Issue & Return)",
+      "Reference Services (on-demand using reference books and internet)",
+      "Catalogue (title-wise, author-wise, subject-wise)",
+      "Current Awareness Service (New Arrivals, Library Rules, Journal List on notice board)",
+      "Inter Library Loan (with all Sinhgad Institutes campus)",
+      "Internet Facility (separate 10 computers for students)",
+      "Email Service (on-demand soft copy of syllabus, question papers, research papers)",
+      "Newspaper Clipping (for up-to-date record)",
+      "Photocopy Facility"
+    ],
+    "library_staff": [
+      {
+        "sr_no": 1,
+        "name": "Dr. S. S. Kulkarni",
+        "designation": "Librarian",
+        "qualification": "B.Sc., B.Lib. & I.Sc., M.Lib. I.Sc. M.Phil, Ph.D."
+      },
+      {
+        "sr_no": 2,
+        "name": "Mrs. Nisha K. Karande",
+        "designation": "Librarian",
+        "qualification": "M.A B.Ed, B. Lib, M.Lib., I.Sc, M.Phil."
+      },
+      {
+        "sr_no": 3,
+        "name": "Mrs. Sarika A. Nikam",
+        "designation": "Lib. Cleark",
+        "qualification": "B.A. B.Lib., I.Sc, M.Lib. I.Sc."
+      },
+      {
+        "sr_no": 4,
+        "name": "Mrs. Vandana Mali",
+        "designation": "Lib. Cleark",
+        "qualification": "B.A. M.Lib.I.Sc."
+      },
+      {
+        "sr_no": 5,
+        "name": "Mr. Dadaso Waghmare",
+        "designation": "Jr. Cleark",
+        "qualification": "B.A."
+      },
+      {
+        "sr_no": 6,
+        "name": "Mr. Dadaso Nale",
+        "designation": "Jr. Cleark",
+        "qualification": "B. A., B.Lib, I.Sc."
+      },
+      {
+        "sr_no": 7,
+        "name": "Mr. Jayash Mali",
+        "designation": "Clerk",
+        "qualification": "H.S.C, ITI"
+      },
+      {
+        "sr_no": 8,
+        "name": "Mr. Shrikrushna Awatade",
+        "designation": "Peon",
+        "qualification": "10th Pass"
+      }
+    ],
+    "vision": "To become a premier learning resource centre with a state of art library resources and services in Engineering and related areas."
+  },
+  "rules_and_regulations": {
+    "general": [
+      "Only registered members are allowed.",
+      "Registered members are issued a library borrow card which is non-transferable.",
+      "Members should produce their ID cards at the entrance.",
+      "Strict silence must be observed and mobile phones switched off.",
+      "Borrowers must check physical condition of books before borrowing.",
+      "Members are responsible for books issued against their lost tickets.",
+      "Overdue charges apply for late returns.",
+      "Personal books, printed material, bags, mobile, etc. are not allowed inside and must be kept at the Property Counter (at owner's risk).",
+      "Readers should not write in, mark, or damage books or furniture."
+    ],
+    "circulation_issue_system": "Books will be issued on presentation of the library card. Students are responsible for any damage noticed at the time of return.",
+    "overdue_charges": "Books issued for 7 days. Fine of Rs. 2 per day per book from the due date.",
+    "book_lost": "Borrower shall replace the book with the same or latest edition or pay double the cost after permission from the librarian.",
+    "care_of_cards": "Do not fold or alter cards. Members are responsible for all cards issued to them.",
+    "loss_of_cards": "Report loss to librarian in writing. A replacement card can be issued on payment of Rs. 50/- per card after checking borrowing register.",
+    "validity_of_cards": "Valid for the respective academic year only. Cards must be returned at the end of the academic year.",
+    "care_of_library_books": "Handle books/journals carefully. Marking, writing, tearing pages, or mutilation is strictly prohibited and the reader will be held responsible.",
+    "no_due_certificate": "Each student must obtain a No dues certificate from the library after returning all books, surrendering cards, and paying any outstanding dues."
+  },
+  "e_resources_subscribed": [
+    "DELNET (Developing Library Network) - delnet.in",
+    "SKNSCOE e-Book Library Through FTP (1000+)",
+    "e-PGPathshala",
+    "e-Shodhganga (e-Thesis)",
+    "e-shodshindhu",
+    "National Digital Library",
+    "DOAJ (Journals)",
+    "Turnitin-Plagiarism",
+    "PDF Drive"
+  ],
+  "open_access_resources": {
+    "journals": [
+      {
+        "name": "Directory of Open Access Journals",
+        "url": "http://www.doaj.org/"
+      },
+      {
+        "name": "Indian Academy of Sciences (IAS)",
+        "url": "http://www.ias.ac.in"
+      },
+      {
+        "name": "Niscair Full Text Journals",
+        "url": "http://nopr.niscair.res.in/"
+      },
+      {
+        "name": "Bentham 175 Open Access Journals",
+        "url": "http://www.bentham.org/open/a-z.htm"
+      },
+      {
+        "name": "High Wire Press",
+        "url": "http://highwire.stanford.edu/"
+      },
+      {
+        "name": "Institute of Physics electronic journals (IOP)",
+        "url": "http://iopscience.iop.org/journals"
+      },
+      {
+        "name": "Journal of the Indian Institute of Science",
+        "url": "http://journal.library.iisc.ernet.in/"
+      },
+      {
+        "name": "Down to Earth",
+        "url": "http://www.downtoearth.org.in"
+      },
+      {
+        "name": "Indian National Science Academy journals (INSA)",
+        "url": "http://www.insa.nic.in/"
+      },
+      {
+        "name": "Indian Journals",
+        "url": "http://indianjournals.com/ijor.aspx"
+      },
+      {
+        "name": "Iete Journals",
+        "url": "http://www.ietejournals.org/"
+      },
+      {
+        "name": "Open j-Gate",
+        "url": "http://jgateplus.com"
+      },
+      {
+        "name": "Open Access Journals Search Engine",
+        "url": "http://www.oajse.com/"
+      },
+      {
+        "name": "Medknow Publications Journals",
+        "url": "http://www.medknow.com"
+      },
+      {
+        "name": "Hindawi Journals",
+        "url": "http://www.hindawi.com/journals/"
+      }
+    ],
+    "free_ebooks": [
+      {
+        "name": "Digital Library of India",
+        "url": "http://www.dli.ernet.in/"
+      },
+      {
+        "name": "National Digital Library of India",
+        "url": "https://ndl.iitkgp.ac.in/"
+      },
+      {
+        "name": "Project Gutenberg",
+        "url": "http://www.gutenberg.org/"
+      },
+      {
+        "name": "Free fiction books",
+        "url": "http://www.freefictionbooks.org/"
+      },
+      {
+        "name": "Ebook4free",
+        "url": "http://www.ebooks4free.net"
+      },
+      {
+        "name": "Free-Books",
+        "url": "http://www.free-books.org"
+      },
+      {
+        "name": "Free-ebooks",
+        "url": "http://www.free-ebooks.net"
+      },
+      {
+        "name": "Book for Download",
+        "url": "http://www.bookfordownload.com/"
+      },
+      {
+        "name": "Download engineering books",
+        "url": "http://downloadengineeringebooks.blogspot.in"
+      },
+      {
+        "name": "Virtual books",
+        "url": "http://www.virtualbooks4u.blogspot.in/"
+      },
+      {
+        "name": "Free Tech books",
+        "url": "http://www.freetechbooks.com/"
+      }
+    ],
+    "general_engineering": [
+      {
+        "name": "Greatest Engineering Achievements",
+        "url": "http://www.greatachievements.org/"
+      },
+      {
+        "name": "Shodhganga",
+        "url": "http://shodhganga.inflibnet.ac.in/"
+      },
+      {
+        "name": "MGU Theses",
+        "url": "http://www.mgutheses.org/"
+      }
+    ],
+    "dictionaries_encyclopaedia": [
+      {
+        "name": "One look Dictionary",
+        "url": "http://www.onelook.com/"
+      },
+      {
+        "name": "Encyclopaedia",
+        "url": "http://www.encyclopedia.com"
+      },
+      {
+        "name": "Encyclopaedia Britannica",
+        "url": "http://www.britannica.com"
+      },
+      {
+        "name": "Merriam Webster Dictionary",
+        "url": "http://www.merriam-webster.com"
+      },
+      {
+        "name": "Engineering Dictionary",
+        "url": "http://www.engineering-dictionary.org/"
+      },
+      {
+        "name": "Webster's Online Dictionary",
+        "url": "http://www.websters-online-dictionary.org"
+      }
+    ],
+    "open_course_wears": [
+      {
+        "name": "NPTEL",
+        "url": "http://www.nptel.iitm.ac.in/"
+      },
+      {
+        "name": "MIT OpenCourseware",
+        "url": "http://ocw.mit.edu/"
+      },
+      {
+        "name": "Berkeley's Open Courseware",
+        "url": "http://webcast.berkeley.edu/"
+      },
+      {
+        "name": "IGNOU RESOURCES (eGyanKosh)",
+        "url": "http://www.egyankosh.ac.in/"
+      },
+      {
+        "name": "Open Yale Courses",
+        "url": "http://oyc.yale.edu/"
+      },
+      {
+        "name": "National Science Digital Library at NISCAIR",
+        "url": "http://www.nsdl.niscair.res.in/"
+      },
+      {
+        "name": "Networked Digital Library of Theses and Dissertations (NDLTD)",
+        "url": "http://www.ndltd.org/"
+      }
+    ],
+    "science_citation_index": [
+      {
+        "name": "Science Citation Index",
+        "url": "http://thomsonreuters.com/products_services/science/science_products/a-z/science_citation_index/"
+      }
+    ]
+  },
+  "contact": {
+    "librarian": {
+      "name": "Dr. Shirish S. Kulkarni",
+      "email": "shirish.kulkarni@sknscoe.ac.in",
+      "phone": "02186 – 250030",
+      "mobile": "+919850888223"
+    }
+  },
+  "suggestion_box": "We have put the suggestion box in library. All library users can put their valuable suggestion at any time."
+}

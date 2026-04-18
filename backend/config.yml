@@ -1,0 +1,11 @@
+language: en
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: DIETClassifier
+    epochs: 50
+  - name: EntitySynonymMapper
+policies:
+  - name: RulePolicy

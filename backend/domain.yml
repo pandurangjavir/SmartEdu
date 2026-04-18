@@ -1,0 +1,25 @@
+version: "3.1"
+intents:
+  - greet
+  - fee_query
+  - attendance_query
+  - event_query
+  - ask_admission
+  - ask_cutoff
+  - ask_scholarship
+  - ask_placement
+  - ask_hostel
+
+responses:
+  utter_greet:
+  - text: "Hello! How can I help you today?"
+  utter_fee:
+  - text: "Here are your fee details:"
+  utter_attendance:
+  - text: "Here is your attendance information:"
+  utter_event:
+  - text: "Here are the upcoming events:"
+  utter_admission:
+  - text: "Let me check the admission details for you:"
+  utter_cutoff:
+  - text: "Here are the recent cutoff details:"

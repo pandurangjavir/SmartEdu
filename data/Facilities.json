@@ -1,0 +1,65 @@
+{
+  "page": "Facilities",
+  "sections": {
+    "hostel_facility": {
+      "title": "Hostel facility",
+      "description": "Our college have hostel facilities with modern amenities. Each room has sufficient space and has an attached bath cum toilet. The rooms are fully furnished. There is also a separate wing for foreign students available with all required amenities of international standard, having additional facilities for cooking, washing etc.",
+      "hostel_information": {
+        "number_of_hostels": 6,
+        "boys_capacity": 1600,
+        "girls_capacity": 800,
+        "types_of_rooms": "The self-content rooms are fully furnished and accommodate four students each. The rooms also have incoming telephone call facility.",
+        "allotment_pattern": "First Come First Served basis",
+        "fees_with_deposit": "Rs 36000/- (Including mess) per annum",
+        "anti_ragging": "Mechanism is Established",
+        "security": "Round the clock security at all necessary places",
+        "timings": "Students are allowed to enter in the hostel maximum up to 9.00 pm in the evening. Students are allowed to study in library reading hall up to 12.00 midnight."
+      }
+    },
+    "canteen_and_mess_facility": {
+      "title": "Canteen And Mess facility",
+      "description": "Institute has spacious canteen, kitchen staff takes care to provide the students and staff a nutritious and hygienic food at our campus canteen. A variety hygienic food and snack items includes south and North Indian Meals, variety Rice, Chat, Chinese foods, fresh juices, fruits, Ice creams and other variety of menus. Excellent quality food hygienically prepared is provided in the mess. There are two mess-halls. There are also canteens/fast food outlets serving snacks and refreshments."
+    },
+    "shopping_complex": {
+      "title": "Shopping Complex",
+      "description": "To facilities the students with easy access for stationary and other basic requirements shops are available in the campus. Facilities like groceries, fruits, stationary, Xerox, fruit salad, milk and all daily needs are available in shops."
+    },
+    "transportation_facilities": {
+      "title": "Transportation Facilities",
+      "description": "Information not specified in the provided text."
+    },
+    "security": {
+      "title": "Security",
+      "description": "Round the clock security in the campus is assured by the team of guards headed by Retd. Colonel and assisted by CCTV surveillance. Adequate number of guards have been deputed at the entrance, at the hostels and various locations. Outsiders are allowed to enter in the campus only after proper verification and entry in the register. Special attention has been paid to Girl's hostel security by round the clock presence of ladies wardens. Movement register is maintained to keep record of girl’s movements in and outside the hostel. Daily attendance record is maintained. While issuing night out permission, consent from parents is ensured. If a girl fails to report hostel, in stipulated time frame, parents are informed telephonically."
+    },
+    "staff_quarters": {
+      "title": "Staff Quarters",
+      "description": "A notable feature of Institute is the specially architectured residential quarters, providing accommodation to Head of Institute, faculty members and other supporting staff members. This has been a strategic decision, planned to save the commuting time of the faculty members and also to ensure availability and accessibility for timely guidance and expertise. There are 3 blocks of 2 BHK flats for faculty members and separate block of 3 BHK for the head of the institute. For supporting staff, there are 2 blocks of 1BHK flats and 4 blocks of 1RK flats."
+    },
+    "cleanliness_housekeeping": {
+      "title": "Cleanliness/ Housekeeping",
+      "description": "To maintain clean and hygienic environment in all the buildings, dedicated team of sweepers works continuously. Lady sweepers are assigned for cleaning of roads and other areas of landscaping. Daily monitoring of cleanliness in campus is ensured by the supervisors and in the form of written reports. Separate contractual assignment is made for pleasant gardening and landscaping."
+    },
+    "sewage_treatment_plant": {
+      "title": "Sewage Treatment Plant",
+      "description": "Information not specified in the provided text."
+    },
+    "medical_facility": {
+      "title": "Medical Facility",
+      "description": "Dispensary is located near the hostels wherein 24 hours availability of Doctor takes care of students’ health problem. In case of medical emergency, ambulance and estate office vehicles are made available. Medical store is also available in the campus."
+    },
+    "power_supply": {
+      "title": "Power Supply",
+      "electricity": "Electricity is supplied from Maharashtra State Electricity Distribution Co. Ltd via 3-Phase line with LT 11 KVA express feeder line.",
+      "power_backup": "Power back up from Kirloskar Genset of 500KVA capacity."
+    },
+    "internet_and_wifi": {
+      "title": "Internet and Wi-Fi facility",
+      "description": "Wi-Fi facility is available through 300 Mbps lease line. In addition, Wi-Fi network by Reliance Jio is also available."
+    },
+    "drinking_water": {
+      "title": "Drinking water",
+      "description": "Pure drinking water is provided to entire campus using RO water purifiers cum coolers."
+    }
+  }
+}

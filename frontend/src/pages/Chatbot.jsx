@@ -19,6 +19,8 @@ const Chatbot = () => {
   const [isListening, setIsListening] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [alerts, setAlerts] = useState([]);
+  const [isVoiceMode, setIsVoiceMode] = useState(false);
+  const isVoiceModeRef = useRef(false);
   const recognitionRef = useRef(null);
   const messagesEndRef = useRef(null);
 
@@ -68,7 +70,7 @@ const Chatbot = () => {
   }, []);
 
   // ---------- Web Speech API (Voice Input) ----------
-  const startListening = useCallback(() => {
+  const startListening = useCallback((autoSend = false) => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
       toast.error('Voice input is not supported in this browser. Try Chrome.');
@@ -83,10 +85,16 @@ const Chatbot = () => {
       const transcript = event.results[0][0].transcript;
       setInputMessage(transcript);
       toast.success(`🎤 Heard: "${transcript}"`);
+      if (autoSend || isVoiceModeRef.current) {
+        // Delay slightly to let the user see what was heard
+        setTimeout(() => sendMessage(transcript), 500);
+      }
     };
     recognition.onerror = (event) => {
       console.error('Speech recognition error:', event.error);
-      toast.error('Voice recognition failed. Please try again.');
+      if (event.error !== 'no-speech') {
+        toast.error('Voice recognition failed. Please try again.');
+      }
       setIsListening(false);
     };
     recognition.onend = () => {
@@ -96,7 +104,7 @@ const Chatbot = () => {
     recognitionRef.current = recognition;
     recognition.start();
     setIsListening(true);
-    toast.success('🎤 Listening... Speak now!');
+    if (!autoSend) toast.success('🎤 Listening... Speak now!');
   }, []);
 
   const stopListening = useCallback(() => {
@@ -115,26 +123,33 @@ const Chatbot = () => {
     window.speechSynthesis.cancel(); // stop any previous speech
     const utterance = new SpeechSynthesisUtterance(text.replace(/[*#_`]/g, '')); // strip markdown
     utterance.lang = 'en-IN';
-    utterance.rate = 0.95;
+    utterance.rate = 1.0;
     utterance.pitch = 1;
     utterance.onstart = () => setIsPlaying(true);
-    utterance.onend = () => setIsPlaying(false);
+    utterance.onend = () => {
+      setIsPlaying(false);
+      if (isVoiceModeRef.current) {
+        // Automatically start listening for the next turn
+        setTimeout(() => startListening(true), 500);
+      }
+    };
     window.speechSynthesis.speak(utterance);
   };
 
   // ---------- Send Message ----------
-  const sendMessage = async () => {
-    if (!inputMessage.trim()) return;
+  const sendMessage = async (overrideMessage = null) => {
+    const messageContent = overrideMessage || inputMessage;
+    if (!messageContent.trim()) return;
 
     const userMessage = {
       id: Date.now(),
-      content: inputMessage,
+      content: messageContent,
       sender: 'user',
       timestamp: new Date().toISOString()
     };
     setMessages(prev => [...prev, userMessage]);
-    const messageToSend = inputMessage;
-    setInputMessage('');
+    const messageToSend = messageContent;
+    if (!overrideMessage) setInputMessage('');
     setLoading(true);
 
     try {
@@ -144,9 +159,10 @@ const Chatbot = () => {
         user_id: user?.user_id || 1
       }, { headers: token ? { Authorization: `Bearer ${token}` } : {} });
 
+      const aiText = response.data.response;
       const aiMessage = {
         id: Date.now() + 1,
-        content: response.data.response,
+        content: aiText,
         sender: 'ai',
         timestamp: new Date().toISOString(),
         intent: response.data.intent,
@@ -177,6 +193,11 @@ const Chatbot = () => {
         });
       }
       setMessages(prev => [...prev, ...updates]);
+
+      // If in Voice Mode, automatically speak the AI's response
+      if (isVoiceModeRef.current) {
+        speakMessage(aiText);
+      }
     } catch (error) {
       toast.error('Failed to send message');
       console.error('Error sending message:', error);
@@ -189,6 +210,23 @@ const Chatbot = () => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
+    }
+  };
+
+  const toggleVoiceMode = () => {
+    const nextMode = !isVoiceMode;
+    setIsVoiceMode(nextMode);
+    isVoiceModeRef.current = nextMode;
+    
+    if (nextMode) {
+      toast.success('🎙️ Voice Conversation Mode Active');
+      // Greet the user to start the conversation
+      const greeting = "Voice mode activated. I'm listening. How can I help you today?";
+      speakMessage(greeting);
+    } else {
+      window.speechSynthesis.cancel();
+      stopListening();
+      toast('⌨️ Switched to Typing Mode');
     }
   };
 
@@ -224,13 +262,26 @@ const Chatbot = () => {
               Your intelligent academic companion
             </p>
           </div>
-          <button
-            onClick={clearChatHistory}
-            className="flex items-center space-x-2 px-4 py-2 text-xs font-bold text-red-600 bg-red-50 hover:bg-red-100 border border-red-100 rounded-xl transition-all shadow-sm"
-          >
-            <TrashIcon className="h-4 w-4" />
-            <span className="hidden sm:inline">Clear Chat</span>
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={toggleVoiceMode}
+              className={`flex items-center space-x-2 px-4 py-2 text-xs font-bold rounded-xl transition-all shadow-sm border ${
+                isVoiceMode 
+                  ? 'bg-indigo-600 text-white border-indigo-700 animate-pulse' 
+                  : 'bg-white text-indigo-600 border-indigo-100 hover:bg-indigo-50'
+              }`}
+            >
+              <MicrophoneIcon className="h-4 w-4" />
+              <span>{isVoiceMode ? 'Voice Mode: ON' : 'Switch to Voice Mode'}</span>
+            </button>
+            <button
+              onClick={clearChatHistory}
+              className="flex items-center space-x-2 px-4 py-2 text-xs font-bold text-red-600 bg-red-50 hover:bg-red-100 border border-red-100 rounded-xl transition-all shadow-sm"
+            >
+              <TrashIcon className="h-4 w-4" />
+              <span className="hidden sm:inline">Clear Chat</span>
+            </button>
+          </div>
         </div>
       </div>
 
